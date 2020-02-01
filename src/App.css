@@ -39,6 +39,11 @@ button.MuiButtonBase-root.MuiButton-root.MuiButton-text {
 }
 
 /* Pages */
+
+.pageHeader {
+  margin-top: 50px;
+}
+
 .pageTitle {
   font-size: 3.5rem;
   font-family: "Anton", sans-serif;
@@ -55,5 +60,39 @@ h4.headerDesc {
 /* HomePage Illustration */
 .animated.fadeInRightBig.headerImageIntro {
   animation-delay: 1s;
-  animation-duration: 3s;
+  animation-duration: 2s;
 }
+
+g#Ball {
+  width: 700px;
+}
+
+.sectionTwoFluidWrapper {
+  height: 300px;
+  background: linear-gradient(180deg, #f5f5f5, transparent);
+  margin-top: 50px auto;
+  margin-top: 50px auto;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  color: #212121;
+  text-align: center;
+}
+
+h3.MuiTypography-root.sectionTwoContent.MuiTypography-h3.MuiTypography-alignCenter {
+  font-family: "Anton", sans-serif;
+}
+
+span.standOutText {
+  font-family: "Anton", sans-serif;
+  color: #f50057;
+}
+
+.sectionThreeFluidWrapper {
+  margin-top: 100px;
+
+  background-color:#f50057;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+

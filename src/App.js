@@ -1,6 +1,7 @@
 import React from "react";
 
 import Navigation from "./Components/Navigation";
+
 import HomePage from "./Components/HomePage";
 import AboutPage from "./Components/AboutPage";
 import RegistrationPage from "./Components/RegistrationPage";

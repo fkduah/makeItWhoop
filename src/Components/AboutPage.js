@@ -1,7 +1,13 @@
 import React from "react";
 
+
+
 function AboutPage() {
-  return <h1>From About</h1>;
+  return (
+    <>
+     Here We Are
+    </>
+  );
 }
 
 export default AboutPage;
