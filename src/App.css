@@ -32,3 +32,28 @@ a:hover {
 button.MuiButtonBase-root.MuiButton-root.MuiButton-text {
   color: #f50057;
 }
+
+.highlighted {
+  color: #f50057;
+  font-weight: 600;
+}
+
+/* Pages */
+.pageTitle {
+  font-size: 3.5rem;
+  font-family: "Anton", sans-serif;
+  margin-bottom: 0px;
+}
+
+h4.headerDesc {
+  font-size: 1.2rem;
+  margin-top: 2px;
+  font-weight: 500;
+  animation-duration: 2s;
+}
+
+/* HomePage Illustration */
+.animated.fadeInRightBig.headerImageIntro {
+  animation-delay: 1s;
+  animation-duration: 3s;
+}

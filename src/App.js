@@ -6,7 +6,7 @@ import AboutPage from "./Components/AboutPage";
 import RegistrationPage from "./Components/RegistrationPage";
 import ContactPage from "./Components/ContactPage";
 
-import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 
 import "../src/App.css";
 

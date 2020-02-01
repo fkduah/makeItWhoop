@@ -51,7 +51,7 @@ export default function NavigationToggle() {
       onKeyDown={toggleDrawer(side, false)}
     >
       <List>
-        <img src={logo} style={{ width: `15rem` }} />
+        <img src={logo} alt={"Make It Whoop Logo"} style={{ width: `15rem` }} />
         <ListItemLink>
           <Link to="/">
             <ListItemText primary="Home" style={fonts} />
