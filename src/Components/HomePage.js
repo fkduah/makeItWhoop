@@ -9,10 +9,26 @@ import player from "../../src/highschool-grid-03.jpg";
 import recruiter from "../../src/coach-recruit.jpg";
 import schoolCoach from "../../src/high-school-grid-01.jpg";
 
-import { Container, Grid, Button, Typography, Box } from "@material-ui/core/";
+import {
+  Container,
+  Grid,
+  Button,
+  Typography,
+  Box,
+  makeStyles
+} from "@material-ui/core/";
 
+const useStyles = makeStyles(theme => ({
+  root: {
+    flexGrow: 1
+  },
+  thirdwrapper: {
+    marginBottom: 50
+  }
+}));
 
 function HomePage() {
+  const classes = useStyles();
   return (
     <>
       <Container maxWidth="false">
@@ -48,9 +64,14 @@ function HomePage() {
               <object
                 type="image/svg+xml"
                 data={headerImage}
-                make It whoop Intro
+                make
+                It
+                whoop
+                Intro
                 style={{ maxHeight: "400px" }}
-              >make It whoop Intro</object>
+              >
+                make It whoop Intro
+              </object>
             </Grid>
           </Grid>
         </Container>
@@ -85,28 +106,48 @@ function HomePage() {
       </Container>
 
       <Container maxWidth="false" className="sectionThreeFluidWrapper">
-        <Box container className="sectionThreeFixedWrapper">
-          <Box  display="flex" justifyContent="space-around" alignContents="space-between"  flexWrap="wrap"  className="pageTitleIntro homePage">
-            <Box class="animated fadeInUp">
-            <Link to="/registration">
-              <Card image={player} title="Players" content="Would you like to play basketball after high school? We created this platform for you! Share your basketball information, statistics, highlights, academics and more with university and college coaches across North America today!"
-              imageTitle="Basketball Players" />
-              </Link>
-            </Box>
-            <Box   class="animated fadeInUp">
-            <Link to="/registration">
-              <Card  image={recruiter} title="Recruiters" content="Canadian girls basketball is the best it’s ever been, and this is how you can keep up with your busy schedule! View player profiles and recruitment information, and scroll through their timeline for recent news and accomplishments here!"
-              imageTitle="Recruiter Images"/>
-              </Link>
-            </Box>
-            <Box  class="animated fadeInUp">
-            <Link to="/registration">
-              <Card  image={schoolCoach} title="High School Coaches" content="Make it Whoop is here to help your program succeed and your players reach their potential. We offer a variety of seminar and coaching options to help you fill the gaps."
-              imageTitle="High School Coaches"/>
-              </Link>
+        <div className={classes.thirdwrapper}>
+          <Box container className="sectionThreeFixedWrapper">
+            <Box
+              display="flex"
+              justifyContent="space-around"
+              alignContents="space-between"
+              flexWrap="wrap"
+              className="pageTitleIntro homePage"
+            >
+              <Box class="animated fadeInUp">
+                <Link to="/registration">
+                  <Card
+                    image={player}
+                    title="Players"
+                    content="Would you like to play basketball after high school? We created this platform for you! Share your basketball information, statistics, highlights, academics and more with university and college coaches across North America today!"
+                    imageTitle="Basketball Players"
+                  />
+                </Link>
+              </Box>
+              <Box class="animated fadeInUp">
+                <Link to="/registration">
+                  <Card
+                    image={recruiter}
+                    title="Recruiters"
+                    content="Canadian girls basketball is the best it’s ever been, and this is how you can keep up with your busy schedule! View player profiles and recruitment information, and scroll through their timeline for recent news and accomplishments here!"
+                    imageTitle="Recruiter Images"
+                  />
+                </Link>
+              </Box>
+              <Box class="animated fadeInUp">
+                <Link to="/registration">
+                  <Card
+                    image={schoolCoach}
+                    title="High School Coaches"
+                    content="Make it Whoop is here to help your program succeed and your players reach their potential. We offer a variety of seminar and coaching options to help you fill the gaps."
+                    imageTitle="High School Coaches"
+                  />
+                </Link>
+              </Box>
             </Box>
           </Box>
-        </Box>
+        </div>
       </Container>
     </>
   );
