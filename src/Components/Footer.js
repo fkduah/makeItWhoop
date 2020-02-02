@@ -15,7 +15,10 @@ const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
     top: "auto",
-      bottom: 0
+    bottom: 0,
+    position: "fixed",
+   left: 0,
+   width: "100%"
   },
  
   copyright: {
