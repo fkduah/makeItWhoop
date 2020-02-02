@@ -1,6 +1,7 @@
 import React from "react";
 
 import Navigation from "./Components/Navigation";
+import Footer from "./Components/Footer";
 
 import HomePage from "./Components/HomePage";
 import AboutPage from "./Components/AboutPage";
@@ -21,6 +22,7 @@ function App() {
         <Route exact path="/Contact" component={ContactPage} />
         <Route path="/" component={HomePage} />
       </Switch>
+      <Footer />
     </div>
   );
 }

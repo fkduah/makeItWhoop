@@ -15,6 +15,9 @@ const useStyles = makeStyles({
   },
   media: {
     height: 300
+  },
+  copy:{
+    minHeight: 175
   }
 });
 
@@ -22,14 +25,14 @@ export default function MediaCard(props) {
   const classes = useStyles();
 
   return (
-    <Card className={classes.card}>
+    <Card className={classes.card} boxShadow={2}>
       <CardActionArea>
         <CardMedia
           className={classes.media}
           image={props.image}
           title={props.imageTitle}
         />
-        <CardContent>
+        <CardContent className={classes.copy}>
           <Typography gutterBottom variant="h5" component="h2">
             {props.title}
           </Typography>
