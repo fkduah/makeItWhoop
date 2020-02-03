@@ -10,8 +10,6 @@ import ContactPage from "./Components/ContactPage";
 
 import { Route, Switch } from "react-router-dom";
 
-import firebase from "./firebase";
-
 import "../src/App.css";
 
 function App() {

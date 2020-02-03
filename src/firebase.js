@@ -1,4 +1,4 @@
-import firebase from "firebase/app";
+import firebase, { auth, firestore } from "firebase/app";
 import "firebase/auth";
 import "firebase/firebase-firestore";
 
@@ -13,7 +13,7 @@ import "firebase/firebase-firestore";
 //   measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
 // };
 
-var firebaseConfig = {
+const firebaseConfig = {
   apiKey: "AIzaSyDhKXheZxEU2Oa-otJHJ32B7SbwfibKE4Q",
   authDomain: "make-it-whoop.firebaseapp.com",
   databaseURL: "https://make-it-whoop.firebaseio.com",
@@ -28,3 +28,46 @@ firebase.initializeApp(firebaseConfig);
 // firebase.analytics();
 
 export default firebase;
+
+// Auth New Users And Add To A Collection
+export const authUser = (email, password, collection, fields) => {
+  firebase
+    .auth()
+    .createUserWithEmailAndPassword(email, password)
+    .then(cred => {
+      return firebase
+        .firestore()
+        .collection(collection)
+        .doc(cred.user.uid)
+        .set(fields);
+    });
+};
+
+// Sign Out Users
+export const signOutUser = () => {
+  firebase
+    .auth()
+    .signOut()
+    .then(() => console.log("user logged out"));
+};
+
+// Login Users
+export const signInUser = () => {
+  firebase
+    .auth()
+    .signInWithEmailAndPassword()
+    .then(cred => {
+      console.log(cred);
+      return cred;
+    });
+};
+
+// listen to auth status change
+
+firebase.auth().onAuthStateChanged(user => {
+  if (user) {
+    console.log("user logged in");
+  } else {
+    console.log("user logged out");
+  }
+});
