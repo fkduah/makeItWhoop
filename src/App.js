@@ -10,11 +10,13 @@ import ContactPage from "./Components/ContactPage";
 
 import { Route, Switch } from "react-router-dom";
 
+import firebase from "./firebase";
+
 import "../src/App.css";
 
 function App() {
   return (
-    <div>
+    <>
       <Navigation />
       <Switch>
         <Route exact path="/About" component={AboutPage} />
@@ -23,7 +25,7 @@ function App() {
         <Route path="/" component={HomePage} />
       </Switch>
       <Footer />
-    </div>
+    </>
   );
 }
 
