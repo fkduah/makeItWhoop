@@ -28,7 +28,7 @@ function RegistrationPage() {
   return (
     <>
       <Container
-        maxWidth="false"
+        maxWidth={false}
         style={{ paddingLeft: "0px", paddingRight: "0px" }}
       >
         <div className="animated fadeInDownBig">
@@ -36,7 +36,7 @@ function RegistrationPage() {
         </div>
       </Container>
 
-      <Container maxWidth="false" className="sectionTwoFluidWrapper">
+      <Container maxWidth={false} className="sectionTwoFluidWrapper">
         <Container fixed className="sectionTwoFixedWrapper">
           <div className={classes.contentWrap}>
             <Typography
@@ -63,17 +63,17 @@ function RegistrationPage() {
       </Container>
 
       <Container maxWidth="lg">
-        <Container maxWidth="false" className="">
+        <Container maxWidth={false} className="">
           <div className={classes.thirdwrapper}>
-            <Box container className="">
+            <Box container="true" className="">
               <Box
                 display="flex"
                 justifyContent="space-around"
-                alignContents="space-between"
+                alignContent="space-between"
                 flexWrap="wrap"
                 className="pageTitleIntro homePage"
               >
-                <Box class="">
+                <Box className="">
                   <Card
                     buttonName="Sign Up"
                     modalDescript="The Description"
@@ -83,7 +83,7 @@ function RegistrationPage() {
                     imageTitle="Basketball Players"
                   />
                 </Box>
-                <Box class="">
+                <Box className="">
                   <Card
                     buttonName="Sign Up"
                     modalDescript="The Description"
@@ -93,7 +93,7 @@ function RegistrationPage() {
                     imageTitle="Recruiter Images"
                   />
                 </Box>
-                <Box class="">
+                <Box className="">
                   <Card
                     modalTitle="High School Coaches Sign Up"
                     modalDescript="The Description"

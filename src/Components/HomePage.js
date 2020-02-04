@@ -8,6 +8,7 @@ import headerImage from "../../src/MakeItWhoop-Illustration.svg";
 import player from "../../src/highschool-grid-03.jpg";
 import recruiter from "../../src/coach-recruit.jpg";
 import schoolCoach from "../../src/high-school-grid-01.jpg";
+import logo from "../../src/logo2.png";
 
 import {
   Container,
@@ -31,10 +32,11 @@ function HomePage() {
   const classes = useStyles();
   return (
     <>
-      <Container maxWidth="false">
+      <Container maxWidth={false}>
         <Container fixed className="pageHeader">
           <Grid container className="pageTitleIntro homePage">
             <Grid item xs={12} sm={6} className="headerIntro">
+              <img src={logo} alt="Make It Happen" style={{ width: "150px" }} />
               <h1 className="animated fadeInLeftBig fadeIn pageTitle">
                 Welcome To
                 <br />
@@ -64,10 +66,10 @@ function HomePage() {
               <object
                 type="image/svg+xml"
                 data={headerImage}
-                make
-                It
-                whoop
-                Intro
+                className="make
+            It
+            whoop
+            Intro"
                 style={{ maxHeight: "400px" }}
               >
                 make It whoop Intro
@@ -77,7 +79,7 @@ function HomePage() {
         </Container>
       </Container>
 
-      <Container maxWidth="false" className="sectionTwoFluidWrapper">
+      <Container maxWidth={false} className="sectionTwoFluidWrapper">
         <Container fixed className="sectionTwoFixedWrapper">
           <Typography variant="h3" align="center" className="sectionTwoContent">
             It's
@@ -105,17 +107,17 @@ function HomePage() {
         </Container>
       </Container>
 
-      <Container maxWidth="false" className="sectionThreeFluidWrapper">
+      <Container maxWidth={false} className="sectionThreeFluidWrapper">
         <div className={classes.thirdwrapper}>
-          <Box container className="sectionThreeFixedWrapper">
+          <Box container="true" className="sectionThreeFixedWrapper">
             <Box
               display="flex"
               justifyContent="space-around"
-              alignContents="space-between"
+              alignContent="space-between"
               flexWrap="wrap"
               className="pageTitleIntro homePage"
             >
-              <Box class="animated fadeInUp">
+              <Box className="animated fadeInUp">
                 <Link to="/registration">
                   <Card
                     image={player}
@@ -125,7 +127,7 @@ function HomePage() {
                   />
                 </Link>
               </Box>
-              <Box class="animated fadeInUp">
+              <Box className="animated fadeInUp">
                 <Link to="/registration">
                   <Card
                     image={recruiter}
@@ -135,7 +137,7 @@ function HomePage() {
                   />
                 </Link>
               </Box>
-              <Box class="animated fadeInUp">
+              <Box className="animated fadeInUp">
                 <Link to="/registration">
                   <Card
                     image={schoolCoach}

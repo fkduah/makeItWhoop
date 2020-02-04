@@ -2,7 +2,7 @@ import firebase, { auth, firestore } from "firebase/app";
 import "firebase/auth";
 import "firebase/firebase-firestore";
 
-// var firebaseConfig = {
+// const firebaseConfig = {
 //   apiKey: process.env.REACT_APP_FIREBASE_KEY,
 //   authDomain: process.env.REACT_APP_FIREBASE_DOMAIN,
 //   databaseURL: process.env.REACT_APP_FIREBASE_DATABASE,
@@ -31,12 +31,10 @@ export default firebase;
 
 // Auth New Users And Add To A Collection
 export const authUser = (email, password, collection, fields) => {
-  firebase
-    .auth()
+  auth()
     .createUserWithEmailAndPassword(email, password)
     .then(cred => {
-      return firebase
-        .firestore()
+      firestore()
         .collection(collection)
         .doc(cred.user.uid)
         .set(fields);
@@ -64,10 +62,12 @@ export const signInUser = () => {
 
 // listen to auth status change
 
-firebase.auth().onAuthStateChanged(user => {
-  if (user) {
-    console.log("user logged in");
-  } else {
-    console.log("user logged out");
-  }
-});
+export const userLoginWatch = updateState => {
+  firebase.auth().onAuthStateChanged(user => {
+    if (user) {
+      updateState(true);
+    } else {
+      updateState(false);
+    }
+  });
+};

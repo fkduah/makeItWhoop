@@ -34,7 +34,7 @@ function ContactPage() {
   return (
     <>
       <Container
-        maxWidth="false"
+        maxWidth={false}
         style={{ paddingLeft: "0px", paddingRight: "0px" }}
       >
         <div className="animated fadeInDownBig">
@@ -46,7 +46,7 @@ function ContactPage() {
         </div>
       </Container>
 
-      <Container maxWidth="false" className="sectionTwoFluidWrapper">
+      <Container maxWidth={false} className="sectionTwoFluidWrapper">
         <Container fixed className="sectionTwoFixedWrapper">
           <div className={classes.contentWrap}>
             <Typography

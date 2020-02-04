@@ -1,6 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { Modal, Button } from "@material-ui/core";
+import { Modal, Typography } from "@material-ui/core";
 
 function getModalStyle() {
   return {
@@ -38,14 +38,15 @@ export default function ModalRegister(props) {
 
   return (
     <div>
-      <Button
-        size="sm"
+      <Typography
+        variant="subtitle1"
+        size="medium"
         color="secondary"
-        style={{ fontWeight: "600" }}
+        style={{ fontWeight: "600", paddingLeft: "20px" }}
         onClick={handleOpen}
       >
         {props.buttonName}
-      </Button>
+      </Typography>
       <Modal
         aria-labelledby="simple-modal-title"
         aria-describedby="simple-modal-description"

@@ -27,7 +27,7 @@ export default function MediaCard(props) {
   const classes = useStyles();
 
   return (
-    <Card className={classes.card} boxShadow={2} variant="outlined">
+    <Card className={classes.card} variant="outlined">
       <CardActionArea>
         {props.image && (
           <CardMedia
