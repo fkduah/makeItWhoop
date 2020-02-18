@@ -18,7 +18,12 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(2, 4, 3)
   },
   modalTitle: {
-    fontFamily: "Avaro, sans-serif"
+    fontFamily: "Avaro, sans-serif",
+    textAlign: "center"
+  },
+  modalDescript: {
+    textAlign: "center",
+    marginBottom: "20px"
   }
 }));
 
@@ -57,7 +62,9 @@ export default function ModalRegister(props) {
           <h2 id="simple-modal-title" className={classes.modalTitle}>
             {props.modalTitle}
           </h2>
-          <p id="simple-modal-description">{props.modalDescript}</p>
+          <p id="simple-modal-description" className={classes.modalDescript}>
+            {props.modalDescript}
+          </p>
         </div>
       </Modal>
     </div>

@@ -76,7 +76,7 @@ function RegistrationPage() {
                 <Box className="">
                   <Card
                     buttonName="Sign Up"
-                    modalDescript="The Description"
+                    modalDescript="Let recruiters see your greatest moments.  Sign up and keep them in the loop!"
                     modalTitle="Player Sign Up"
                     title="Players"
                     content="Would you like to play basketball after high school? We created this platform for you! Share your basketball information, statistics, highlights, academics and more with university and college coaches across North America today!"

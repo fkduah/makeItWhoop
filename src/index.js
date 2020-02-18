@@ -3,14 +3,19 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "../src/App";
 
+import { FirebaseContext } from "./Components/Firebase/FirebaseContext";
+import Firebase from "./Components/Firebase/Firebase";
+
 import { BrowserRouter as Router } from "react-router-dom";
 
 import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
-  <Router>
-    <App />
-  </Router>,
+  <FirebaseContext.Provider value={new Firebase()}>
+    <Router>
+      <App />
+    </Router>
+  </FirebaseContext.Provider>,
   document.getElementById("root")
 );
 
