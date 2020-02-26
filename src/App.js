@@ -6,7 +6,8 @@ import Footer from "./Components/Footer";
 import HomePage from "./Components/HomePage";
 import AboutPage from "./Components/AboutPage";
 import RegistrationPage from "./Components/RegistrationPage";
-import PlayerRegistrationPage from "./Components/PlayerRegistrationPage";
+import RegistrationFormWrap from "./Components/RegistrationFormWrap";
+
 import ContactPage from "./Components/ContactPage";
 
 import { Route, Switch } from "react-router-dom";
@@ -19,12 +20,13 @@ function App() {
       <Navigation />
       <Switch>
         <Route exact path="/about" component={AboutPage} />
+
+        <Route exact path="/registration" component={RegistrationPage} />
         <Route
           exact
-          path="/registration/:players"
-          component={PlayerRegistrationPage}
+          path="/registration/:forms"
+          component={RegistrationFormWrap}
         />
-        <Route exact path="/registration" component={RegistrationPage} />
         <Route exact path="/contact" component={ContactPage} />
         <Route path="/" component={HomePage} />
       </Switch>

@@ -2,9 +2,9 @@ import React from "react";
 
 import { Container, Box, makeStyles, Typography } from "@material-ui/core";
 
-import headerImage from "../../src/ContactUs.png";
-
 import Card from "./CardSelect";
+
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -27,15 +27,6 @@ function RegistrationPage() {
 
   return (
     <>
-      <Container
-        maxWidth={false}
-        style={{ paddingLeft: "0px", paddingRight: "0px" }}
-      >
-        <div className="animated fadeInDownBig">
-          <img src={headerImage} className={classes.topImage} alt="About Us" />
-        </div>
-      </Container>
-
       <Container maxWidth={false} className="sectionTwoFluidWrapper">
         <Container fixed className="sectionTwoFixedWrapper">
           <div className={classes.contentWrap}>
@@ -74,34 +65,37 @@ function RegistrationPage() {
                 className="pageTitleIntro homePage"
               >
                 <Box className="">
-                  <Card
-                    buttonName="Sign Up"
-                    modalDescript="Let recruiters see your greatest moments.  Sign up and keep them in the loop!"
-                    modalTitle="Player Sign Up"
-                    title="Players"
-                    content="Would you like to play basketball after high school? We created this platform for you! Share your basketball information, statistics, highlights, academics and more with university and college coaches across North America today!"
-                    imageTitle="Basketball Players"
-                  />
+                  <Link to="registration/player">
+                    <Card
+                      buttonName="Register"
+                      buttonURL="registration/player"
+                      title="Players"
+                      content="Would you like to play basketball after high school? We created this platform for you! Share your basketball information, statistics, highlights, academics and more with university and college coaches across North America today!"
+                      imageTitle="Basketball Players"
+                    />
+                  </Link>
                 </Box>
                 <Box className="">
-                  <Card
-                    buttonName="Sign Up"
-                    modalDescript="The Description"
-                    modalTitle="Recruiter Sign Up"
-                    title="Recruiters"
-                    content="Canadian girls basketball is the best it’s ever been, and this is how you can keep up with your busy schedule! View player profiles and recruitment information, and scroll through their timeline for recent news and accomplishments here!"
-                    imageTitle="Recruiter Images"
-                  />
+                  <Link to="registration/recruiter">
+                    <Card
+                      buttonName="Register"
+                      buttonURL="registration/recruiter"
+                      title="Recruiters"
+                      content="Canadian girls basketball is the best it’s ever been, and this is how you can keep up with your busy schedule! View player profiles and recruitment information, and scroll through their timeline for recent news and accomplishments here!"
+                      imageTitle="Recruiter Images"
+                    />
+                  </Link>
                 </Box>
                 <Box className="">
-                  <Card
-                    modalTitle="High School Coaches Sign Up"
-                    modalDescript="The Description"
-                    buttonName="Sign Up"
-                    title="High School Coaches"
-                    content="Make it Whoop is here to help your program succeed and your players reach their potential. We offer a variety of seminar and coaching options to help you fill the gaps."
-                    imageTitle="High School Coaches"
-                  />
+                  <Link to="registration/coach">
+                    <Card
+                      buttonName="Register"
+                      buttonURL="registration/coach"
+                      title="High School Coaches"
+                      content="Make it Whoop is here to help your program succeed and your players reach their potential. We offer a variety of seminar and coaching options to help you fill the gaps."
+                      imageTitle="High School Coaches"
+                    />
+                  </Link>
                 </Box>
               </Box>
             </Box>
