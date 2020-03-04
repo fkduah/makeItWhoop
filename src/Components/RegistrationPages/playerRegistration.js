@@ -85,7 +85,7 @@ export default function PlayerForm(props) {
     <Container maxWidth={false}>
       <Container fixed>
         <form
-          style={{ marginBottom: "100px", textAlign: "left" }}
+          style={{ marginBottom: "200px", textAlign: "left" }}
           onSubmit={handleSubmit}
         >
           <h3 style={{ textAlign: "left" }}>INFORMATION</h3>
