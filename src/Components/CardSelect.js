@@ -4,9 +4,6 @@ import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
-import Button from "@material-ui/core/Button";
-
-import { Link } from "react-router-dom";
 
 import Typography from "@material-ui/core/Typography";
 
@@ -42,18 +39,13 @@ export default function MediaCard(props) {
             gutterBottom
             variant="h5"
             component="h2"
-            style={{ fontFamily: "Anton" }}
+            style={{ fontFamily: "Anton", color: "#f50057" }}
           >
             {props.title}
           </Typography>
           <Typography variant="body1" color="textSecondary" component="p">
             {props.content}
           </Typography>
-          <Link to={props.buttonURL}>
-            <Button size="large" color="primary">
-              {props.buttonName}
-            </Button>
-          </Link>
         </CardContent>
       </CardActionArea>
     </Card>

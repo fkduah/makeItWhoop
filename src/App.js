@@ -16,7 +16,7 @@ import "../src/App.css";
 
 function App() {
   return (
-    <>
+    <div>
       <Navigation />
       <Switch>
         <Route exact path="/about" component={AboutPage} />
@@ -31,7 +31,7 @@ function App() {
         <Route path="/" component={HomePage} />
       </Switch>
       <Footer />
-    </>
+    </div>
   );
 }
 
