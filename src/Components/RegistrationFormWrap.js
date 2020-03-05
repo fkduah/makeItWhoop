@@ -49,11 +49,11 @@ function FormWrapperPage(props) {
   const formShow = () => {
     const form = props.match.url;
     if (form === "/registration/player") {
-      return <PlayerForm />;
+      return <PlayerForm history={props.history} />;
     } else if (form === "/registration/recruiter") {
-      return <RecruiterForm />;
+      return <RecruiterForm history={props.history} />;
     } else if (form === "/registration/coach") {
-      return <CoachForm />;
+      return <CoachForm history={props.history} />;
     } else {
       return "Visit The Registration Page";
     }

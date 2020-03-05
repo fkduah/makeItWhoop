@@ -4,6 +4,8 @@ import { TextField, Container, Button } from "@material-ui/core";
 
 import { useFirebase } from "../Firebase/FirebaseContext";
 
+import Iframe from "react-iframe";
+
 export default function PlayerForm(props) {
   const [name, setName] = useState("");
   const [dob, setDob] = useState("");
@@ -79,6 +81,7 @@ export default function PlayerForm(props) {
   const handleSubmit = e => {
     e.preventDefault();
     register(email, password, "PSA", registrationFields);
+    props.history.push("/");
   };
 
   return (
@@ -97,7 +100,7 @@ export default function PlayerForm(props) {
             placeholder=""
             fullWidth
             required
-            error={name ? false : true}
+            error={name ? true : false}
             value={name}
             helperText={name ? "" : "required"}
             margin="normal"
@@ -115,7 +118,7 @@ export default function PlayerForm(props) {
             placeholder=""
             type="date"
             required
-            error={dob ? false : true}
+            error={dob ? true : false}
             value={dob}
             helperText={dob ? "" : "required"}
             margin="normal"
@@ -132,7 +135,7 @@ export default function PlayerForm(props) {
             placeholder=""
             type="date"
             required
-            error={gradYear ? false : true}
+            error={gradYear ? true : false}
             value={gradYear}
             helperText={gradYear ? "" : "required"}
             margin="normal"
@@ -148,7 +151,7 @@ export default function PlayerForm(props) {
             style={{ margin: 8 }}
             placeholder=""
             type="number"
-            error={height ? false : true}
+            error={height ? true : false}
             value={height}
             helperText={height ? "" : "required"}
             margin="normal"
@@ -163,7 +166,7 @@ export default function PlayerForm(props) {
             label="Position"
             style={{ margin: 8 }}
             placeholder=""
-            error={position ? false : true}
+            error={position ? true : false}
             value={position}
             margin="normal"
             name={position}
@@ -181,7 +184,7 @@ export default function PlayerForm(props) {
             style={{ margin: 8 }}
             placeholder=""
             fullWidth
-            error={guardian ? false : true}
+            error={guardian ? true : false}
             value={guardian}
             margin="normal"
             name={guardian}
@@ -196,7 +199,7 @@ export default function PlayerForm(props) {
             style={{ margin: 8 }}
             placeholder=""
             value={relationship}
-            error={relationship ? false : true}
+            error={relationship ? true : false}
             margin="normal"
             name={relationship}
             InputLabelProps={{
@@ -210,7 +213,7 @@ export default function PlayerForm(props) {
             style={{ margin: 8 }}
             placeholder=""
             required
-            error={phone ? false : true}
+            error={phone ? true : false}
             value={phone}
             helperText={phone ? "" : "required"}
             margin="normal"
@@ -222,11 +225,12 @@ export default function PlayerForm(props) {
           />
           <TextField
             id="email"
+            type="email"
             label="Email Adress"
             style={{ margin: 8 }}
             placeholder=""
             required
-            error={email ? false : true}
+            error={email ? true : false}
             value={email}
             helperText={email ? "" : "required"}
             margin="normal"
@@ -238,14 +242,14 @@ export default function PlayerForm(props) {
           />
           <TextField
             id="password"
-            label="Make it Whoop Password"
+            label="Account Password"
             type="password"
             style={{ margin: 8 }}
             placeholder=""
             required
-            error={password ? false : true}
+            error={password.length > 5 ? false : true}
             value={password}
-            helperText={password ? "" : "required"}
+            helperText={password.length > 5 ? "" : "min 6 characters"}
             margin="normal"
             name={password}
             InputLabelProps={{
@@ -262,7 +266,7 @@ export default function PlayerForm(props) {
             style={{ margin: 8 }}
             placeholder=""
             required
-            error={country ? false : true}
+            error={country ? true : false}
             value={country}
             helperText={country ? "" : "required"}
             margin="normal"
@@ -278,7 +282,7 @@ export default function PlayerForm(props) {
             style={{ margin: 8 }}
             placeholder=""
             required
-            error={province ? false : true}
+            error={province ? true : false}
             value={province}
             helperText={province ? "" : "required"}
             margin="normal"
@@ -296,7 +300,7 @@ export default function PlayerForm(props) {
             label="Instagram"
             style={{ margin: 8 }}
             placeholder=""
-            error={instagram ? false : true}
+            error={instagram ? true : false}
             value={instagram}
             helperText={instagram ? "" : "required"}
             margin="normal"
@@ -311,7 +315,7 @@ export default function PlayerForm(props) {
             label="Twitter "
             style={{ margin: 8 }}
             placeholder=""
-            error={twitter ? false : true}
+            error={twitter ? true : false}
             value={twitter}
             helperText={twitter ? "" : "required"}
             margin="normal"
@@ -328,7 +332,7 @@ export default function PlayerForm(props) {
             label="Winter Team Name "
             style={{ margin: 8 }}
             placeholder=""
-            error={winter ? false : true}
+            error={winter ? true : false}
             value={winter}
             margin="normal"
             name={winter}
@@ -342,7 +346,7 @@ export default function PlayerForm(props) {
             label="Winter Team's League "
             style={{ margin: 8 }}
             placeholder=""
-            error={wleague ? false : true}
+            error={wleague ? true : false}
             value={wleague}
             margin="normal"
             name={wleague}
@@ -357,7 +361,7 @@ export default function PlayerForm(props) {
             label="Team's Instagram"
             style={{ margin: 8 }}
             placeholder=""
-            error={winstagram ? false : true}
+            error={winstagram ? true : false}
             value={winstagram}
             margin="normal"
             name={winstagram}
@@ -371,7 +375,7 @@ export default function PlayerForm(props) {
             label="Team's Twitter "
             style={{ margin: 8 }}
             placeholder=""
-            error={wtwitter ? false : true}
+            error={wtwitter ? true : false}
             value={wtwitter}
             margin="normal"
             name={wtwitter}
@@ -385,7 +389,7 @@ export default function PlayerForm(props) {
             label="Coach's Name"
             style={{ margin: 8 }}
             placeholder=""
-            error={wcoach ? false : true}
+            error={wcoach ? true : false}
             value={wcoach}
             margin="normal"
             name={wcoach}
@@ -400,7 +404,7 @@ export default function PlayerForm(props) {
             label="Coach's Number"
             style={{ margin: 8 }}
             placeholder=""
-            error={wcoachphone ? false : true}
+            error={wcoachphone ? true : false}
             value={wcoachphone}
             margin="normal"
             name={wcoachphone}
@@ -415,7 +419,7 @@ export default function PlayerForm(props) {
             label="Coach's Email"
             style={{ margin: 8 }}
             placeholder=""
-            error={wcoachemail ? false : true}
+            error={wcoachemail ? true : false}
             value={wcoachemail}
             margin="normal"
             name={wcoachemail}
@@ -432,7 +436,7 @@ export default function PlayerForm(props) {
             label="Jersey Number"
             style={{ margin: 8 }}
             placeholder=""
-            error={wjersy ? false : true}
+            error={wjersy ? true : false}
             value={wjersy}
             margin="normal"
             name={wjersy}
@@ -447,7 +451,7 @@ export default function PlayerForm(props) {
             label="Summer Team Name "
             style={{ margin: 8 }}
             placeholder=""
-            error={summer ? false : true}
+            error={summer ? true : false}
             value={summer}
             margin="normal"
             name={summer}
@@ -461,7 +465,7 @@ export default function PlayerForm(props) {
             label="Summer Team's League "
             style={{ margin: 8 }}
             placeholder=""
-            error={sleague ? false : true}
+            error={sleague ? true : false}
             value={sleague}
             margin="normal"
             name={sleague}
@@ -476,7 +480,7 @@ export default function PlayerForm(props) {
             label="Team's Instagram"
             style={{ margin: 8 }}
             placeholder=""
-            error={sinstagram ? false : true}
+            error={sinstagram ? true : false}
             value={sinstagram}
             margin="normal"
             name={sinstagram}
@@ -490,7 +494,7 @@ export default function PlayerForm(props) {
             label="Team's Twitter "
             style={{ margin: 8 }}
             placeholder=""
-            error={stwitter ? false : true}
+            error={stwitter ? true : false}
             value={stwitter}
             margin="normal"
             name={stwitter}
@@ -504,7 +508,7 @@ export default function PlayerForm(props) {
             label="Coach's Name"
             style={{ margin: 8 }}
             placeholder=""
-            error={scoach ? false : true}
+            error={scoach ? true : false}
             value={scoach}
             margin="normal"
             name={scoach}
@@ -519,7 +523,7 @@ export default function PlayerForm(props) {
             label="Coach's Number"
             style={{ margin: 8 }}
             placeholder=""
-            error={scoachphone ? false : true}
+            error={scoachphone ? true : false}
             value={scoachphone}
             margin="normal"
             name={scoachphone}
@@ -534,7 +538,7 @@ export default function PlayerForm(props) {
             label="Coach's Email"
             style={{ margin: 8 }}
             placeholder=""
-            error={scoachemail ? false : true}
+            error={scoachemail ? true : false}
             value={scoachemail}
             margin="normal"
             name={scoachemail}
@@ -551,7 +555,7 @@ export default function PlayerForm(props) {
             label="Jersey Number"
             style={{ margin: 8 }}
             placeholder=""
-            error={sjersy ? false : true}
+            error={sjersy ? true : false}
             value={sjersy}
             margin="normal"
             name={sjersy}
@@ -564,10 +568,11 @@ export default function PlayerForm(props) {
           <h3 style={{ textAlign: "LEFT" }}>MEDIA</h3>
           <TextField
             id="image"
+            type="url"
             label="Profile Image URL"
             style={{ margin: 8 }}
             placeholder=""
-            error={image ? false : true}
+            error={image ? true : false}
             value={image}
             margin="normal"
             name={image}
@@ -576,12 +581,21 @@ export default function PlayerForm(props) {
             }}
             onChange={e => setImage(e.target.value)}
           />
+
+          <br />
+          {image && (
+            <div>
+              <img src={image} alt="profile image" height="300" />
+              <br />
+            </div>
+          )}
           <TextField
             id="youtube"
-            label="Youtube Highlight Video"
+            type="url"
+            label="Youtube Video ID"
             style={{ margin: 8 }}
             placeholder=""
-            error={youtube ? false : true}
+            error={youtube ? true : false}
             value={youtube}
             margin="normal"
             name={youtube}
@@ -591,6 +605,21 @@ export default function PlayerForm(props) {
             onChange={e => setYoutube(e.target.value)}
           />
           <br />
+          {youtube && (
+            <div>
+              <Iframe
+                url={`http://www.youtube.com/embed/${youtube}`}
+                width="426px"
+                height="250px"
+                id="myId"
+                className="myClassname"
+                display="initial"
+                position="relative"
+              />
+              <br />
+              <br />
+            </div>
+          )}
           <Button
             variant="contained"
             color="secondary"
