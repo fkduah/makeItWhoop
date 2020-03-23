@@ -21,7 +21,7 @@ class Firebase {
   authUser = (email, password, collection, fields) => {
     auth()
       .createUserWithEmailAndPassword(email, password)
-      .then(cred => {
+      .then((cred) => {
         firestore()
           .collection(collection)
           .doc(cred.user.uid)
@@ -38,20 +38,26 @@ class Firebase {
   };
 
   // Login Users
-  signInUser = () => {
+  signInUser = (email, password, stateUpdate) => {
     firebase
       .auth()
-      .signInWithEmailAndPassword()
-      .then(cred => {
+      .signInWithEmailAndPassword(email, password)
+      .then((cred) => {
         console.log(cred);
         return cred;
+      })
+      .catch((e) => {
+        stateUpdate(
+          `We Are Unable To Find Your Account. Please try Again Or Contact www.makeitwhoop@gmail.com To Create An Account`
+        );
+        console.log(e.code);
       });
   };
 
   // listen to auth status change
 
-  userLoginWatch = updateState => {
-    firebase.auth().onAuthStateChanged(user => {
+  userLoginWatch = (updateState) => {
+    firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         updateState(true);
       } else {

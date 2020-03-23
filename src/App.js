@@ -7,6 +7,8 @@ import HomePage from "./Components/HomePage";
 import AboutPage from "./Components/AboutPage";
 import RegistrationPage from "./Components/RegistrationPage";
 import RegistrationFormWrap from "./Components/RegistrationFormWrap";
+import LoginPage from "./Components/LoginPage";
+import PlayersPage from "./Components/PlayersPage";
 
 import ContactPage from "./Components/ContactPage";
 
@@ -28,6 +30,8 @@ function App() {
           component={RegistrationFormWrap}
         />
         <Route exact path="/contact" component={ContactPage} />
+        <Route exact path="/login" component={LoginPage} />
+        <Route exact path="/players" component={PlayersPage} />
         <Route path="/" component={HomePage} />
       </Switch>
       <Footer />

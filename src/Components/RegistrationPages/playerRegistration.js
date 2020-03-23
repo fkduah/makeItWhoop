@@ -78,7 +78,7 @@ export default function PlayerForm(props) {
     youtubeLink: youtube
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     register(email, password, "PSA", registrationFields);
     props.history.push("/");
@@ -96,6 +96,7 @@ export default function PlayerForm(props) {
           <TextField
             id="name"
             label="Full Name"
+            variant="filled"
             style={{ margin: 8 }}
             placeholder=""
             fullWidth
@@ -108,11 +109,12 @@ export default function PlayerForm(props) {
             InputLabelProps={{
               shrink: true
             }}
-            onChange={e => setName(e.target.value)}
+            onChange={(e) => setName(e.target.value)}
           />
           <br />
           <TextField
             id="dob"
+            variant="filled"
             label="Date Of Birth"
             style={{ margin: 8 }}
             placeholder=""
@@ -126,10 +128,11 @@ export default function PlayerForm(props) {
             InputLabelProps={{
               shrink: true
             }}
-            onChange={e => setDob(e.target.value)}
+            onChange={(e) => setDob(e.target.value)}
           />
           <TextField
             id="gradYear"
+            variant="filled"
             label="Graduating Class"
             style={{ margin: 8 }}
             placeholder=""
@@ -143,10 +146,11 @@ export default function PlayerForm(props) {
             InputLabelProps={{
               shrink: true
             }}
-            onChange={e => setGradYear(e.target.value)}
+            onChange={(e) => setGradYear(e.target.value)}
           />
           <TextField
             id="height"
+            variant="filled"
             label="Height (inches)"
             style={{ margin: 8 }}
             placeholder=""
@@ -159,10 +163,11 @@ export default function PlayerForm(props) {
             InputLabelProps={{
               shrink: true
             }}
-            onChange={e => setHeight(e.target.value)}
+            onChange={(e) => setHeight(e.target.value)}
           />
           <TextField
             id="position"
+            variant="filled"
             label="Position"
             style={{ margin: 8 }}
             placeholder=""
@@ -173,13 +178,14 @@ export default function PlayerForm(props) {
             InputLabelProps={{
               shrink: true
             }}
-            onChange={e => setPosition(e.target.value)}
+            onChange={(e) => setPosition(e.target.value)}
           />
           <br />
           <h3 style={{ textAlign: "left" }}>PERSONAL / GUARDIAN CONTACT</h3>
           <br />
           <TextField
             id="guardian"
+            variant="filled"
             label="Guardians Name"
             style={{ margin: 8 }}
             placeholder=""
@@ -191,7 +197,7 @@ export default function PlayerForm(props) {
             InputLabelProps={{
               shrink: true
             }}
-            onChange={e => setGuardian(e.target.value)}
+            onChange={(e) => setGuardian(e.target.value)}
           />
           <TextField
             id="relationship"
@@ -199,13 +205,14 @@ export default function PlayerForm(props) {
             style={{ margin: 8 }}
             placeholder=""
             value={relationship}
+            variant="filled"
             error={relationship ? true : false}
             margin="normal"
             name={relationship}
             InputLabelProps={{
               shrink: true
             }}
-            onChange={e => setRelationship(e.target.value)}
+            onChange={(e) => setRelationship(e.target.value)}
           />
           <TextField
             id="phone"
@@ -213,6 +220,7 @@ export default function PlayerForm(props) {
             style={{ margin: 8 }}
             placeholder=""
             required
+            variant="filled"
             error={phone ? true : false}
             value={phone}
             helperText={phone ? "" : "required"}
@@ -221,7 +229,7 @@ export default function PlayerForm(props) {
             InputLabelProps={{
               shrink: true
             }}
-            onChange={e => setPhone(e.target.value)}
+            onChange={(e) => setPhone(e.target.value)}
           />
           <TextField
             id="email"
@@ -229,6 +237,7 @@ export default function PlayerForm(props) {
             label="Email Adress"
             style={{ margin: 8 }}
             placeholder=""
+            variant="filled"
             required
             error={email ? true : false}
             value={email}
@@ -238,7 +247,7 @@ export default function PlayerForm(props) {
             InputLabelProps={{
               shrink: true
             }}
-            onChange={e => setEmail(e.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
           />
           <TextField
             id="password"
@@ -246,6 +255,7 @@ export default function PlayerForm(props) {
             type="password"
             style={{ margin: 8 }}
             placeholder=""
+            variant="filled"
             required
             error={password.length > 5 ? false : true}
             value={password}
@@ -255,7 +265,7 @@ export default function PlayerForm(props) {
             InputLabelProps={{
               shrink: true
             }}
-            onChange={e => setPassword(e.target.value)}
+            onChange={(e) => setPassword(e.target.value)}
           />
           <br />
           <h3 style={{ textAlign: "left" }}>MAILING ADDRESS</h3>
@@ -266,6 +276,7 @@ export default function PlayerForm(props) {
             style={{ margin: 8 }}
             placeholder=""
             required
+            variant="filled"
             error={country ? true : false}
             value={country}
             helperText={country ? "" : "required"}
@@ -274,7 +285,7 @@ export default function PlayerForm(props) {
             InputLabelProps={{
               shrink: true
             }}
-            onChange={e => setCountry(e.target.value)}
+            onChange={(e) => setCountry(e.target.value)}
           />
           <TextField
             id="province"
@@ -287,10 +298,11 @@ export default function PlayerForm(props) {
             helperText={province ? "" : "required"}
             margin="normal"
             name={province}
+            variant="filled"
             InputLabelProps={{
               shrink: true
             }}
-            onChange={e => setProvince(e.target.value)}
+            onChange={(e) => setProvince(e.target.value)}
           />
           <br />
           <h3 style={{ textAlign: "LEFT" }}>SOCIAL MEDIA</h3>
@@ -304,11 +316,12 @@ export default function PlayerForm(props) {
             value={instagram}
             helperText={instagram ? "" : "required"}
             margin="normal"
+            variant="filled"
             name={instagram}
             InputLabelProps={{
               shrink: true
             }}
-            onChange={e => setInstagram(e.target.value)}
+            onChange={(e) => setInstagram(e.target.value)}
           />
           <TextField
             id="twitter"
@@ -319,11 +332,12 @@ export default function PlayerForm(props) {
             value={twitter}
             helperText={twitter ? "" : "required"}
             margin="normal"
+            variant="filled"
             name={twitter}
             InputLabelProps={{
               shrink: true
             }}
-            onChange={e => setTwitter(e.target.value)}
+            onChange={(e) => setTwitter(e.target.value)}
           />
           <br />
           <h3 style={{ textAlign: "LEFT" }}>WINTER TEAM</h3>
@@ -336,10 +350,11 @@ export default function PlayerForm(props) {
             value={winter}
             margin="normal"
             name={winter}
+            variant="filled"
             InputLabelProps={{
               shrink: true
             }}
-            onChange={e => setWinter(e.target.value)}
+            onChange={(e) => setWinter(e.target.value)}
           />
           <TextField
             id="wleague"
@@ -348,12 +363,13 @@ export default function PlayerForm(props) {
             placeholder=""
             error={wleague ? true : false}
             value={wleague}
+            variant="filled"
             margin="normal"
             name={wleague}
             InputLabelProps={{
               shrink: true
             }}
-            onChange={e => setWLeague(e.target.value)}
+            onChange={(e) => setWLeague(e.target.value)}
           />
 
           <TextField
@@ -364,11 +380,12 @@ export default function PlayerForm(props) {
             error={winstagram ? true : false}
             value={winstagram}
             margin="normal"
+            variant="filled"
             name={winstagram}
             InputLabelProps={{
               shrink: true
             }}
-            onChange={e => setWinstagram(e.target.value)}
+            onChange={(e) => setWinstagram(e.target.value)}
           />
           <TextField
             id="wtwitter"
@@ -379,10 +396,11 @@ export default function PlayerForm(props) {
             value={wtwitter}
             margin="normal"
             name={wtwitter}
+            variant="filled"
             InputLabelProps={{
               shrink: true
             }}
-            onChange={e => setWtwitter(e.target.value)}
+            onChange={(e) => setWtwitter(e.target.value)}
           />
           <TextField
             id="wcoach"
@@ -392,11 +410,12 @@ export default function PlayerForm(props) {
             error={wcoach ? true : false}
             value={wcoach}
             margin="normal"
+            variant="filled"
             name={wcoach}
             InputLabelProps={{
               shrink: true
             }}
-            onChange={e => setWcoach(e.target.value)}
+            onChange={(e) => setWcoach(e.target.value)}
           />
           <TextField
             id="wcoachphone"
@@ -408,10 +427,11 @@ export default function PlayerForm(props) {
             value={wcoachphone}
             margin="normal"
             name={wcoachphone}
+            variant="filled"
             InputLabelProps={{
               shrink: true
             }}
-            onChange={e => setWcoachphone(e.target.value)}
+            onChange={(e) => setWcoachphone(e.target.value)}
           />
           <TextField
             id="wcoachemail"
@@ -422,11 +442,12 @@ export default function PlayerForm(props) {
             error={wcoachemail ? true : false}
             value={wcoachemail}
             margin="normal"
+            variant="filled"
             name={wcoachemail}
             InputLabelProps={{
               shrink: true
             }}
-            onChange={e => setWcoachemail(e.target.value)}
+            onChange={(e) => setWcoachemail(e.target.value)}
           />
           <TextField
             id="wjersy"
@@ -438,12 +459,13 @@ export default function PlayerForm(props) {
             placeholder=""
             error={wjersy ? true : false}
             value={wjersy}
+            variant="filled"
             margin="normal"
             name={wjersy}
             InputLabelProps={{
               shrink: true
             }}
-            onChange={e => setWjersy(e.target.value)}
+            onChange={(e) => setWjersy(e.target.value)}
           />
           <h3 style={{ textAlign: "LEFT" }}>SUMMER TEAM</h3>
           <TextField
@@ -453,12 +475,13 @@ export default function PlayerForm(props) {
             placeholder=""
             error={summer ? true : false}
             value={summer}
+            variant="filled"
             margin="normal"
             name={summer}
             InputLabelProps={{
               shrink: true
             }}
-            onChange={e => setSummer(e.target.value)}
+            onChange={(e) => setSummer(e.target.value)}
           />
           <TextField
             id="sleague"
@@ -468,11 +491,12 @@ export default function PlayerForm(props) {
             error={sleague ? true : false}
             value={sleague}
             margin="normal"
+            variant="filled"
             name={sleague}
             InputLabelProps={{
               shrink: true
             }}
-            onChange={e => setSleague(e.target.value)}
+            onChange={(e) => setSleague(e.target.value)}
           />
 
           <TextField
@@ -483,11 +507,12 @@ export default function PlayerForm(props) {
             error={sinstagram ? true : false}
             value={sinstagram}
             margin="normal"
+            variant="filled"
             name={sinstagram}
             InputLabelProps={{
               shrink: true
             }}
-            onChange={e => setSinstagram(e.target.value)}
+            onChange={(e) => setSinstagram(e.target.value)}
           />
           <TextField
             id="stwitter"
@@ -498,10 +523,11 @@ export default function PlayerForm(props) {
             value={stwitter}
             margin="normal"
             name={stwitter}
+            variant="filled"
             InputLabelProps={{
               shrink: true
             }}
-            onChange={e => setStwitter(e.target.value)}
+            onChange={(e) => setStwitter(e.target.value)}
           />
           <TextField
             id="scoach"
@@ -511,11 +537,12 @@ export default function PlayerForm(props) {
             error={scoach ? true : false}
             value={scoach}
             margin="normal"
+            variant="filled"
             name={scoach}
             InputLabelProps={{
               shrink: true
             }}
-            onChange={e => setScoach(e.target.value)}
+            onChange={(e) => setScoach(e.target.value)}
           />
           <TextField
             id="scoachphone"
@@ -526,11 +553,12 @@ export default function PlayerForm(props) {
             error={scoachphone ? true : false}
             value={scoachphone}
             margin="normal"
+            variant="filled"
             name={scoachphone}
             InputLabelProps={{
               shrink: true
             }}
-            onChange={e => setScoachphone(e.target.value)}
+            onChange={(e) => setScoachphone(e.target.value)}
           />
           <TextField
             id="scoachemail"
@@ -541,11 +569,12 @@ export default function PlayerForm(props) {
             error={scoachemail ? true : false}
             value={scoachemail}
             margin="normal"
+            variant="filled"
             name={scoachemail}
             InputLabelProps={{
               shrink: true
             }}
-            onChange={e => setScoachemail(e.target.value)}
+            onChange={(e) => setScoachemail(e.target.value)}
           />
           <TextField
             id="sjersy"
@@ -557,12 +586,13 @@ export default function PlayerForm(props) {
             placeholder=""
             error={sjersy ? true : false}
             value={sjersy}
+            variant="filled"
             margin="normal"
             name={sjersy}
             InputLabelProps={{
               shrink: true
             }}
-            onChange={e => setSjersy(e.target.value)}
+            onChange={(e) => setSjersy(e.target.value)}
           />
           <br />
           <h3 style={{ textAlign: "LEFT" }}>MEDIA</h3>
@@ -574,24 +604,26 @@ export default function PlayerForm(props) {
             placeholder=""
             error={image ? true : false}
             value={image}
+            variant="filled"
             margin="normal"
             name={image}
             InputLabelProps={{
               shrink: true
             }}
-            onChange={e => setImage(e.target.value)}
+            onChange={(e) => setImage(e.target.value)}
           />
 
           <br />
           {image && (
             <div>
-              <img src={image} alt="profile image" height="300" />
+              <img src={image} alt="profile" height="300" />
               <br />
             </div>
           )}
           <TextField
             id="youtube"
             type="url"
+            variant="filled"
             label="Youtube Video ID"
             style={{ margin: 8 }}
             placeholder=""
@@ -602,7 +634,7 @@ export default function PlayerForm(props) {
             InputLabelProps={{
               shrink: true
             }}
-            onChange={e => setYoutube(e.target.value)}
+            onChange={(e) => setYoutube(e.target.value)}
           />
           <br />
           {youtube && (

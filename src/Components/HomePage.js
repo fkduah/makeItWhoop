@@ -19,7 +19,7 @@ import {
   makeStyles
 } from "@material-ui/core/";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1
   },
@@ -35,7 +35,13 @@ function HomePage() {
       <Container maxWidth={false}>
         <Container fixed className="pageHeader">
           <Grid container className="pageTitleIntro homePage">
-            <Grid item xs={12} sm={6} className="headerIntro">
+            <Grid
+              item
+              xs={12}
+              sm={6}
+              className="headerIntro"
+              style={{ marginBottom: "100px" }}
+            >
               <img src={logo} alt="Make It Happen" style={{ width: "150px" }} />
               <h1 className="animated fadeInLeftBig fadeIn pageTitle">
                 Welcome To
@@ -51,9 +57,9 @@ function HomePage() {
                 Connecting <span className="highlighted">Players</span> and{" "}
                 <span className="highlighted">Recruitors</span>.{" "}
               </h4>
-              <Link to="/registration">
+              <Link to="/login">
                 <Button variant="contained" color="secondary" size="large">
-                  Register Today
+                  Login
                 </Button>
               </Link>
             </Grid>
@@ -99,9 +105,9 @@ function HomePage() {
             basketball.
           </p>
 
-          <Link to="/registration">
+          <Link to="/login">
             <Button variant="contained" color="secondary" size="large">
-              Register Today
+              Login Now
             </Button>
           </Link>
         </Container>
@@ -118,7 +124,7 @@ function HomePage() {
               className="pageTitleIntro homePage"
             >
               <Box className="animated fadeInUp">
-                <Link to="/registration">
+                <Link to="/login">
                   <Card
                     image={player}
                     title="Players"
@@ -128,7 +134,7 @@ function HomePage() {
                 </Link>
               </Box>
               <Box className="animated fadeInUp">
-                <Link to="/registration">
+                <Link to="/login">
                   <Card
                     image={recruiter}
                     title="Recruiters"
@@ -138,7 +144,7 @@ function HomePage() {
                 </Link>
               </Box>
               <Box className="animated fadeInUp">
-                <Link to="/registration">
+                <Link to="/login">
                   <Card
                     image={schoolCoach}
                     title="High School Coaches"

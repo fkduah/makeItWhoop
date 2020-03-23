@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import { Link } from "react-router-dom";
 
-import "../../src/App.css";
+import { useFirebase } from "../Components/Firebase/FirebaseContext";
 
 import NavigationToggle from "./NavigationToggle";
 import grey from "@material-ui/core/colors/grey";
@@ -15,7 +15,9 @@ import {
   Hidden
 } from "@material-ui/core/";
 
-const useStyles = makeStyles(theme => ({
+import "../../src/App.css";
+
+const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1
   },
@@ -34,6 +36,18 @@ const useStyles = makeStyles(theme => ({
 const primary = grey[900];
 
 function Navigation() {
+  const firebase = useFirebase();
+
+  const isOnline = firebase.userLoginWatch;
+  const logout = firebase.signOutUser;
+
+  const [online, setOnline] = useState(false);
+
+  useEffect(() => {
+    // Update the document title using the browser API
+    isOnline(setOnline);
+  }, [isOnline]);
+
   const classes = useStyles();
 
   return (
@@ -54,14 +68,23 @@ function Navigation() {
                 <Link to="/about">About</Link>
               </Typography>
               <Typography variant="h6" className={classes.menuItem}>
-                <Link to="/registration">Registration</Link>
+                <Link to="/players">Players</Link>
               </Typography>
               <Typography variant="h6" className={classes.menuItem}>
                 <Link to="/contact">Contact</Link>
               </Typography>
             </Hidden>
           </div>
-          <Button color="inherit">Login</Button>
+          {online && (
+            <Button color="inherit" onClick={logout()}>
+              <Link to="">Logout</Link>
+            </Button>
+          )}
+          {!online && (
+            <Button color="inherit">
+              <Link to="/login">Login</Link>
+            </Button>
+          )}
         </Toolbar>
       </AppBar>
     </div>
