@@ -65,6 +65,16 @@ class Firebase {
       }
     });
   };
+
+  // Get Collection
+  listPlayers = (collection) => {
+    firestore()
+      .collection(collection)
+      .get()
+      .then((snapShot) => {
+        console.log(snapShot.docs);
+      });
+  };
 }
 
 export default Firebase;

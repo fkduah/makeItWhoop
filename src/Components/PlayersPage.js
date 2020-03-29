@@ -1,8 +1,10 @@
 import React from "react";
 
+import PlayerItem from "./PlayerItem";
+
 import { Container, makeStyles, Typography, Grid } from "@material-ui/core";
 
-// import { useFirebase } from "../Components/Firebase/FirebaseContext";
+import { useFirebase } from "../Components/Firebase/FirebaseContext";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,7 +22,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function PlayersPage() {
-  // const firebase = useFirebase();
+  const firebase = useFirebase();
+
+  const playerList = firebase.listPlayers;
+
+  console.log(playerList("PSA"));
 
   const classes = useStyles();
   return (
@@ -41,7 +47,7 @@ function PlayersPage() {
               justify="center"
               alignItems="center"
             >
-              <h2>Insert Playerlist</h2>
+              <PlayerItem />
             </Grid>
           </div>
         </Container>
