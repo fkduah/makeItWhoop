@@ -72,7 +72,7 @@ class Firebase {
       .collection(collection)
       .onSnapshot((snapShot) => {
         const newList = snapShot.docs.map((doc) => {
-          return { ...doc.data() };
+          return { id: doc.id, ...doc.data() };
         });
         stateUpdate(newList);
       });

@@ -50,8 +50,18 @@ function PlayersPage() {
               justify="center"
               alignItems="center"
             >
-              {players &&
-                players.map((player) => <PlayerItem player={player} />)}
+              <Grid
+                container
+                direction="row"
+                justify="space-around"
+                alignItems="center"
+              >
+                {!players && <h3>Getting The Ballers!</h3>}
+                {players &&
+                  players.map((player) => (
+                    <PlayerItem player={player} key={player.id} />
+                  ))}
+              </Grid>
             </Grid>
           </div>
         </Container>
