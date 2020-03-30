@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import PlayerItem from "./PlayerItem";
 
@@ -22,11 +22,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function PlayersPage() {
+  const [players, setPlayers] = useState();
+
   const firebase = useFirebase();
+  console.log(players);
 
-  const playerList = firebase.listPlayers;
-
-  console.log(playerList("PSA"));
+  useEffect(() => {
+    firebase.list("PSA", setPlayers);
+  }, []);
 
   const classes = useStyles();
   return (
@@ -47,7 +50,8 @@ function PlayersPage() {
               justify="center"
               alignItems="center"
             >
-              <PlayerItem />
+              {players &&
+                players.map((player) => <PlayerItem player={player} />)}
             </Grid>
           </div>
         </Container>

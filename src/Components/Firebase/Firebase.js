@@ -66,13 +66,15 @@ class Firebase {
     });
   };
 
-  // Get Collection
-  listPlayers = (collection) => {
+  // Get Collection Of Players
+  list = (collection, stateUpdate) => {
     firestore()
       .collection(collection)
-      .get()
-      .then((snapShot) => {
-        console.log(snapShot.docs);
+      .onSnapshot((snapShot) => {
+        const newList = snapShot.docs.map((doc) => {
+          return { ...doc.data() };
+        });
+        stateUpdate(newList);
       });
   };
 }
