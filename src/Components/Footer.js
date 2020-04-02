@@ -5,7 +5,7 @@ import "../../src/App.css";
 import grey from "@material-ui/core/colors/grey";
 import { makeStyles, Toolbar, AppBar } from "@material-ui/core/";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     top: "auto",

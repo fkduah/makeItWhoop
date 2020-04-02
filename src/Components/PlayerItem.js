@@ -11,7 +11,7 @@ import Typography from "@material-ui/core/Typography";
 const useStyles = makeStyles({
   root: {
     width: 345,
-    height: 400,
+    height: 500,
     margin: "50px"
   }
 });
@@ -25,9 +25,10 @@ export default function PlayerItem({ player }) {
         <CardMedia
           component="img"
           alt={player["First Name"]}
-          height="140"
-          image="/static/images/cards/contemplative-reptile.jpg"
+          height="250"
+          image={player["profilePicURL"]}
           title={player["First Name"]}
+          style={{ objectFit: "contain" }}
         />
         <CardContent>
           <Typography

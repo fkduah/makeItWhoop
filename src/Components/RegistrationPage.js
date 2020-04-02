@@ -6,7 +6,7 @@ import Card from "./CardSelect";
 
 import { Link } from "react-router-dom";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1
   },
@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
     left: 0
   },
   contentWrap: {
-    marginBottom: 100
+    marginBottom: 0
   }
 }));
 

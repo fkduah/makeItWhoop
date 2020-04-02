@@ -7,18 +7,22 @@ import { useFirebase } from "../Firebase/FirebaseContext";
 import Iframe from "react-iframe";
 
 export default function PlayerForm(props) {
-  const [name, setName] = useState("");
+  const [firstName, setFirstname] = useState("");
+  const [lastName, setLastname] = useState("");
   const [dob, setDob] = useState("");
   const [gradYear, setGradYear] = useState("");
-  const [height, setHeight] = useState("");
   const [position, setPosition] = useState("");
-  const [guardian, setGuardian] = useState("");
+  const [guardianfname, setGuardianFname] = useState("");
+  const [guardianlname, setGuardianLname] = useState("");
   const [relationship, setRelationship] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
+  const [mailing, setMailing] = useState("");
+  const [gphone, setGphone] = useState("");
+  const [gemail, setGemail] = useState("");
+  const [gmailing, setGmailing] = useState("");
+  const [tiktok, setTiktok] = useState("");
   const [password, setPassword] = useState("");
-  const [country, setCountry] = useState("");
-  const [province, setProvince] = useState("");
   const [instagram, setInstagram] = useState("");
   const [twitter, setTwitter] = useState("");
   const [winter, setWinter] = useState("");
@@ -39,23 +43,35 @@ export default function PlayerForm(props) {
   const [sjersy, setSjersy] = useState("");
   const [image, setImage] = useState("");
   const [youtube, setYoutube] = useState("");
+  const [sat, setSAT] = useState("");
+  const [act, setACT] = useState("");
+  const [gpa, setGPA] = useState("");
+  const [style, setStyle] = useState("");
+  const [favorite, setFavorite] = useState("");
+  const [develop, setDevelop] = useState("");
+  const [commitment, setCommitment] = useState("");
+  const [interest, setInterest] = useState("");
 
   const firebase = useFirebase();
 
   const register = firebase.authUser;
 
   const registrationFields = {
-    name,
+    firstName,
+    lastName,
     DOB: dob,
     gradYear,
-    height,
     position,
-    guardian,
+    tiktok,
+    mailing,
+    guardianfname,
+    guardianlname,
+    gphone,
+    gemail,
+    gmailing,
     relationship,
     contactPhone: phone,
     contactEmail: email,
-    country,
-    province,
     instagram,
     twitter,
     winterTeam: winter,
@@ -75,7 +91,11 @@ export default function PlayerForm(props) {
     summerTeamsCoachEmail: scoachemail,
     summerTeamJerseyNum: sjersy,
     profilePicURL: image,
-    youtubeLink: youtube
+    youtubeLink: youtube,
+    favorite,
+    develop,
+    commitment,
+    interest
   };
 
   const handleSubmit = (e) => {
@@ -94,22 +114,57 @@ export default function PlayerForm(props) {
           <h3 style={{ textAlign: "left" }}>INFORMATION</h3>
           <br />
           <TextField
-            id="name"
-            label="Full Name"
-            variant="filled"
+            id="password"
+            label="Account Password"
+            type="password"
             style={{ margin: 8 }}
             placeholder=""
-            fullWidth
+            variant="filled"
             required
-            error={name ? true : false}
-            value={name}
-            helperText={name ? "" : "required"}
+            error={password.length > 5 ? false : true}
+            value={password}
+            helperText={password.length > 5 ? "" : "min 6 characters"}
             margin="normal"
-            name={name}
+            name={password}
             InputLabelProps={{
               shrink: true
             }}
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <br />
+          <TextField
+            id="firstname"
+            label="First Name"
+            variant="filled"
+            style={{ margin: 8 }}
+            placeholder=""
+            required
+            error={firstName ? true : false}
+            value={firstName}
+            helperText={firstName ? "" : "required"}
+            margin="normal"
+            name={firstName}
+            InputLabelProps={{
+              shrink: true
+            }}
+            onChange={(e) => setFirstname(e.target.value)}
+          />
+          <TextField
+            id="lastname"
+            label="Last Name"
+            variant="filled"
+            style={{ margin: 8 }}
+            placeholder=""
+            required
+            error={lastName ? true : false}
+            value={lastName}
+            helperText={lastName ? "" : "required"}
+            margin="normal"
+            name={lastName}
+            InputLabelProps={{
+              shrink: true
+            }}
+            onChange={(e) => setLastname(e.target.value)}
           />
           <br />
           <TextField
@@ -148,23 +203,7 @@ export default function PlayerForm(props) {
             }}
             onChange={(e) => setGradYear(e.target.value)}
           />
-          <TextField
-            id="height"
-            variant="filled"
-            label="Height (inches)"
-            style={{ margin: 8 }}
-            placeholder=""
-            type="number"
-            error={height ? true : false}
-            value={height}
-            helperText={height ? "" : "required"}
-            margin="normal"
-            name={height}
-            InputLabelProps={{
-              shrink: true
-            }}
-            onChange={(e) => setHeight(e.target.value)}
-          />
+
           <TextField
             id="position"
             variant="filled"
@@ -181,39 +220,6 @@ export default function PlayerForm(props) {
             onChange={(e) => setPosition(e.target.value)}
           />
           <br />
-          <h3 style={{ textAlign: "left" }}>PERSONAL / GUARDIAN CONTACT</h3>
-          <br />
-          <TextField
-            id="guardian"
-            variant="filled"
-            label="Guardians Name"
-            style={{ margin: 8 }}
-            placeholder=""
-            fullWidth
-            error={guardian ? true : false}
-            value={guardian}
-            margin="normal"
-            name={guardian}
-            InputLabelProps={{
-              shrink: true
-            }}
-            onChange={(e) => setGuardian(e.target.value)}
-          />
-          <TextField
-            id="relationship"
-            label="Relationship"
-            style={{ margin: 8 }}
-            placeholder=""
-            value={relationship}
-            variant="filled"
-            error={relationship ? true : false}
-            margin="normal"
-            name={relationship}
-            InputLabelProps={{
-              shrink: true
-            }}
-            onChange={(e) => setRelationship(e.target.value)}
-          />
           <TextField
             id="phone"
             label="Phone Number"
@@ -249,62 +255,6 @@ export default function PlayerForm(props) {
             }}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <TextField
-            id="password"
-            label="Account Password"
-            type="password"
-            style={{ margin: 8 }}
-            placeholder=""
-            variant="filled"
-            required
-            error={password.length > 5 ? false : true}
-            value={password}
-            helperText={password.length > 5 ? "" : "min 6 characters"}
-            margin="normal"
-            name={password}
-            InputLabelProps={{
-              shrink: true
-            }}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <br />
-          <h3 style={{ textAlign: "left" }}>MAILING ADDRESS</h3>
-          <br />
-          <TextField
-            id="country"
-            label="Country"
-            style={{ margin: 8 }}
-            placeholder=""
-            required
-            variant="filled"
-            error={country ? true : false}
-            value={country}
-            helperText={country ? "" : "required"}
-            margin="normal"
-            name={country}
-            InputLabelProps={{
-              shrink: true
-            }}
-            onChange={(e) => setCountry(e.target.value)}
-          />
-          <TextField
-            id="province"
-            label="Province"
-            style={{ margin: 8 }}
-            placeholder=""
-            required
-            error={province ? true : false}
-            value={province}
-            helperText={province ? "" : "required"}
-            margin="normal"
-            name={province}
-            variant="filled"
-            InputLabelProps={{
-              shrink: true
-            }}
-            onChange={(e) => setProvince(e.target.value)}
-          />
-          <br />
           <h3 style={{ textAlign: "LEFT" }}>SOCIAL MEDIA</h3>
           <br />
           <TextField
@@ -339,7 +289,271 @@ export default function PlayerForm(props) {
             }}
             onChange={(e) => setTwitter(e.target.value)}
           />
+          <TextField
+            id="tiktok"
+            label="Tik Tok "
+            style={{ margin: 8 }}
+            placeholder=""
+            error={tiktok ? true : false}
+            value={tiktok}
+            helperText={tiktok ? "" : "required"}
+            margin="normal"
+            variant="filled"
+            name={tiktok}
+            InputLabelProps={{
+              shrink: true
+            }}
+            onChange={(e) => setTiktok(e.target.value)}
+          />
+          <TextField
+            id="mailing"
+            label="Mailing Address "
+            style={{ margin: 8 }}
+            placeholder=""
+            error={mailing ? true : false}
+            value={mailing}
+            helperText={mailing ? "" : "required"}
+            margin="normal"
+            multiline
+            rows="4"
+            variant="filled"
+            name={mailing}
+            InputLabelProps={{
+              shrink: true
+            }}
+            onChange={(e) => setMailing(e.target.value)}
+          />
+          <h3 style={{ textAlign: "left" }}>PERSONAL / GUARDIAN CONTACT</h3>
           <br />
+          <TextField
+            id="guardian"
+            variant="filled"
+            label="Guardians First Name"
+            style={{ margin: 8 }}
+            placeholder=""
+            error={guardianfname ? true : false}
+            value={guardianfname}
+            margin="normal"
+            name={guardianfname}
+            InputLabelProps={{
+              shrink: true
+            }}
+            onChange={(e) => setGuardianFname(e.target.value)}
+          />
+          <TextField
+            id="guardianlname"
+            variant="filled"
+            label="Guardians First Name"
+            style={{ margin: 8 }}
+            placeholder=""
+            error={guardianlname ? true : false}
+            value={guardianlname}
+            margin="normal"
+            name={guardianlname}
+            InputLabelProps={{
+              shrink: true
+            }}
+            onChange={(e) => setGuardianLname(e.target.value)}
+          />
+          <TextField
+            id="relationship"
+            label="Relationship"
+            style={{ margin: 8 }}
+            placeholder=""
+            value={relationship}
+            variant="filled"
+            error={relationship ? true : false}
+            margin="normal"
+            name={relationship}
+            InputLabelProps={{
+              shrink: true
+            }}
+            onChange={(e) => setRelationship(e.target.value)}
+          />
+
+          <br />
+          <TextField
+            id="gphone"
+            label="Gaurdian's Phone Number"
+            style={{ margin: 8 }}
+            placeholder=""
+            required
+            variant="filled"
+            error={gphone ? true : false}
+            value={gphone}
+            helperText={gphone ? "" : "required"}
+            margin="normal"
+            name={gphone}
+            InputLabelProps={{
+              shrink: true
+            }}
+            onChange={(e) => setGphone(e.target.value)}
+          />
+          <TextField
+            id="gemail"
+            type="email"
+            label="Gaurdians Email Adress"
+            style={{ margin: 8 }}
+            placeholder=""
+            variant="filled"
+            error={gemail ? true : false}
+            value={gemail}
+            helperText={gemail ? "" : "required"}
+            margin="normal"
+            name={gemail}
+            InputLabelProps={{
+              shrink: true
+            }}
+            onChange={(e) => setGemail(e.target.value)}
+          />
+          <TextField
+            id="gmailing"
+            label="Gaurdian Mailing Address "
+            style={{ margin: 8 }}
+            placeholder=""
+            error={gmailing ? true : false}
+            value={gmailing}
+            helperText={gmailing ? "" : "required"}
+            margin="normal"
+            multiline
+            rows="4"
+            variant="filled"
+            name={gmailing}
+            InputLabelProps={{
+              shrink: true
+            }}
+            onChange={(e) => setGmailing(e.target.value)}
+          />
+          <br />
+          <h3 style={{ textAlign: "LEFT" }}>ACADEMICS</h3>
+          <br />
+          <TextField
+            id="sat"
+            label="SAT Score"
+            style={{ margin: 8 }}
+            placeholder=""
+            variant="filled"
+            error={sat ? true : false}
+            value={sat}
+            helperText={sat ? "" : "required"}
+            margin="normal"
+            name={sat}
+            InputLabelProps={{
+              shrink: true
+            }}
+            onChange={(e) => setSAT(e.target.value)}
+          />
+          <TextField
+            id="act"
+            label="ACT Score"
+            style={{ margin: 8 }}
+            placeholder=""
+            variant="filled"
+            error={act ? true : false}
+            value={act}
+            helperText={act ? "" : "required"}
+            margin="normal"
+            name={act}
+            InputLabelProps={{
+              shrink: true
+            }}
+            onChange={(e) => setACT(e.target.value)}
+          />
+          <TextField
+            id="gpa"
+            label="GPA"
+            style={{ margin: 8 }}
+            placeholder=""
+            variant="filled"
+            error={gpa ? true : false}
+            value={gpa}
+            helperText={gpa ? "" : "required"}
+            margin="normal"
+            name={gpa}
+            InputLabelProps={{
+              shrink: true
+            }}
+            onChange={(e) => setGPA(e.target.value)}
+          />
+          <br />
+          <h3 style={{ textAlign: "LEFT" }}>ATHLETICS</h3>
+          <TextField
+            id="style"
+            label="Preferred Style of Play"
+            style={{ margin: 8 }}
+            placeholder=""
+            value={style}
+            variant="filled"
+            error={style ? true : false}
+            margin="normal"
+            name={style}
+            InputLabelProps={{
+              shrink: true
+            }}
+            onChange={(e) => setStyle(e.target.value)}
+          />
+          <TextField
+            id="favorite"
+            label="Favorite aspect of your game?"
+            style={{ margin: 8 }}
+            placeholder=""
+            value={favorite}
+            variant="filled"
+            error={favorite ? true : false}
+            margin="normal"
+            name={favorite}
+            InputLabelProps={{
+              shrink: true
+            }}
+            onChange={(e) => setFavorite(e.target.value)}
+          />
+          <TextField
+            id="develop"
+            label="Area in your game you’d like to develop?"
+            style={{ margin: 8 }}
+            placeholder=""
+            value={develop}
+            variant="filled"
+            error={develop ? true : false}
+            margin="normal"
+            name={develop}
+            InputLabelProps={{
+              shrink: true
+            }}
+            onChange={(e) => setDevelop(e.target.value)}
+          />
+          <TextField
+            id="interest"
+            label="INSTITUTIONS THAT HAVE SHOWN INTEREST"
+            style={{ margin: 8 }}
+            placeholder=""
+            value={interest}
+            variant="filled"
+            error={interest ? true : false}
+            margin="normal"
+            name={interest}
+            InputLabelProps={{
+              shrink: true
+            }}
+            onChange={(e) => setInterest(e.target.value)}
+          />
+          <TextField
+            id="commitment"
+            label="Commitment"
+            style={{ margin: 8 }}
+            placeholder=""
+            value={commitment}
+            variant="filled"
+            error={commitment ? true : false}
+            margin="normal"
+            name={commitment}
+            InputLabelProps={{
+              shrink: true
+            }}
+            onChange={(e) => setCommitment(e.target.value)}
+          />
+          <br />
+
           <h3 style={{ textAlign: "LEFT" }}>WINTER TEAM</h3>
           <TextField
             id="winter"
