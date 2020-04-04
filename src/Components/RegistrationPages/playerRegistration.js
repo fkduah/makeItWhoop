@@ -1,6 +1,14 @@
 import React, { useState } from "react";
 
-import { TextField, Container, Button } from "@material-ui/core";
+import {
+  TextField,
+  Container,
+  Button,
+  Select,
+  MenuItem,
+  FormControl,
+  InputLabel
+} from "@material-ui/core";
 
 import { useFirebase } from "../Firebase/FirebaseContext";
 
@@ -51,6 +59,7 @@ export default function PlayerForm(props) {
   const [develop, setDevelop] = useState("");
   const [commitment, setCommitment] = useState("");
   const [interest, setInterest] = useState("");
+  const [field, setField] = useState("");
 
   const firebase = useFirebase();
 
@@ -95,7 +104,8 @@ export default function PlayerForm(props) {
     favorite,
     develop,
     commitment,
-    interest
+    interest,
+    field
   };
 
   const handleSubmit = (e) => {
@@ -106,11 +116,8 @@ export default function PlayerForm(props) {
 
   return (
     <Container maxWidth={false}>
-      <Container fixed>
-        <form
-          style={{ marginBottom: "200px", textAlign: "left" }}
-          onSubmit={handleSubmit}
-        >
+      <Container fixed style={{ marginBottom: "200px", textAlign: "left" }}>
+        <form onSubmit={handleSubmit}>
           <h3 style={{ textAlign: "left" }}>INFORMATION</h3>
           <br />
           <TextField
@@ -185,40 +192,47 @@ export default function PlayerForm(props) {
             }}
             onChange={(e) => setDob(e.target.value)}
           />
-          <TextField
-            id="gradYear"
-            variant="filled"
-            label="Graduating Class"
-            style={{ margin: 8 }}
-            placeholder=""
-            type="date"
-            required
-            error={gradYear ? true : false}
-            value={gradYear}
-            helperText={gradYear ? "" : "required"}
-            margin="normal"
-            name={gradYear}
-            InputLabelProps={{
-              shrink: true
-            }}
-            onChange={(e) => setGradYear(e.target.value)}
-          />
 
-          <TextField
-            id="position"
-            variant="filled"
-            label="Position"
-            style={{ margin: 8 }}
-            placeholder=""
-            error={position ? true : false}
-            value={position}
-            margin="normal"
-            name={position}
-            InputLabelProps={{
-              shrink: true
-            }}
-            onChange={(e) => setPosition(e.target.value)}
-          />
+          <FormControl variant="filled">
+            <InputLabel id="gradYear">Graduating Year</InputLabel>
+            <Select
+              style={{ margin: 8, paddingRight: "40px" }}
+              labelId="Position"
+              id="gradYear"
+              value={gradYear}
+              onChange={(e) => setGradYear(e.target.value)}
+            >
+              <MenuItem value="">
+                <em>None</em>
+              </MenuItem>
+              <MenuItem value={2020}>2020</MenuItem>
+              <MenuItem value={2021}>2021</MenuItem>
+              <MenuItem value={2022}>2022</MenuItem>
+              <MenuItem value={2023}>2023</MenuItem>
+              <MenuItem value={2024}>2024</MenuItem>
+              <MenuItem value={2025}>2025</MenuItem>
+            </Select>
+          </FormControl>
+
+          <FormControl variant="filled">
+            <InputLabel id="position">Position</InputLabel>
+            <Select
+              style={{ margin: 8, paddingRight: "40px" }}
+              labelId="position"
+              id="position"
+              value={position}
+              onChange={(e) => setPosition(e.target.value)}
+            >
+              <MenuItem value="">
+                <em>None</em>
+              </MenuItem>
+              <MenuItem value={"PG"}>PG</MenuItem>
+              <MenuItem value={"G"}>G</MenuItem>
+              <MenuItem value={"G/F"}>G/F</MenuItem>
+              <MenuItem value={"F"}>F</MenuItem>
+              <MenuItem value={"C"}>C</MenuItem>
+            </Select>
+          </FormControl>
           <br />
           <TextField
             id="phone"
@@ -254,6 +268,25 @@ export default function PlayerForm(props) {
               shrink: true
             }}
             onChange={(e) => setEmail(e.target.value)}
+          />
+          <br />
+          <TextField
+            id="mailing"
+            label="Mailing Address "
+            style={{ margin: 8 }}
+            placeholder=""
+            error={mailing ? true : false}
+            value={mailing}
+            helperText={mailing ? "" : "required"}
+            margin="normal"
+            multiline
+            rows="4"
+            variant="filled"
+            name={mailing}
+            InputLabelProps={{
+              shrink: true
+            }}
+            onChange={(e) => setMailing(e.target.value)}
           />
           <h3 style={{ textAlign: "LEFT" }}>SOCIAL MEDIA</h3>
           <br />
@@ -305,25 +338,8 @@ export default function PlayerForm(props) {
             }}
             onChange={(e) => setTiktok(e.target.value)}
           />
-          <TextField
-            id="mailing"
-            label="Mailing Address "
-            style={{ margin: 8 }}
-            placeholder=""
-            error={mailing ? true : false}
-            value={mailing}
-            helperText={mailing ? "" : "required"}
-            margin="normal"
-            multiline
-            rows="4"
-            variant="filled"
-            name={mailing}
-            InputLabelProps={{
-              shrink: true
-            }}
-            onChange={(e) => setMailing(e.target.value)}
-          />
-          <h3 style={{ textAlign: "left" }}>PERSONAL / GUARDIAN CONTACT</h3>
+
+          <h3 style={{ textAlign: "left" }}>GUARDIAN CONTACT</h3>
           <br />
           <TextField
             id="guardian"
@@ -343,7 +359,7 @@ export default function PlayerForm(props) {
           <TextField
             id="guardianlname"
             variant="filled"
-            label="Guardians First Name"
+            label="Guardians Last Name"
             style={{ margin: 8 }}
             placeholder=""
             error={guardianlname ? true : false}
@@ -474,6 +490,22 @@ export default function PlayerForm(props) {
               shrink: true
             }}
             onChange={(e) => setGPA(e.target.value)}
+          />
+          <TextField
+            id="field"
+            label="Post-Secondary Field of Study Interest"
+            style={{ margin: 8 }}
+            placeholder=""
+            variant="filled"
+            error={field ? true : false}
+            value={field}
+            helperText={field ? "" : "required"}
+            margin="normal"
+            name={field}
+            InputLabelProps={{
+              shrink: true
+            }}
+            onChange={(e) => setField(e.target.value)}
           />
           <br />
           <h3 style={{ textAlign: "LEFT" }}>ATHLETICS</h3>
