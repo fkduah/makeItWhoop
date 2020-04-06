@@ -7,7 +7,7 @@ import {
   Select,
   MenuItem,
   FormControl,
-  InputLabel
+  InputLabel,
 } from "@material-ui/core";
 
 import { useFirebase } from "../Firebase/FirebaseContext";
@@ -60,6 +60,7 @@ export default function PlayerForm(props) {
   const [commitment, setCommitment] = useState("");
   const [interest, setInterest] = useState("");
   const [field, setField] = useState("");
+  const [height, setHeight] = useState("");
 
   const firebase = useFirebase();
 
@@ -105,7 +106,8 @@ export default function PlayerForm(props) {
     develop,
     commitment,
     interest,
-    field
+    field,
+    height,
   };
 
   const handleSubmit = (e) => {
@@ -134,7 +136,7 @@ export default function PlayerForm(props) {
             margin="normal"
             name={password}
             InputLabelProps={{
-              shrink: true
+              shrink: true,
             }}
             onChange={(e) => setPassword(e.target.value)}
           />
@@ -152,7 +154,7 @@ export default function PlayerForm(props) {
             margin="normal"
             name={firstName}
             InputLabelProps={{
-              shrink: true
+              shrink: true,
             }}
             onChange={(e) => setFirstname(e.target.value)}
           />
@@ -169,7 +171,7 @@ export default function PlayerForm(props) {
             margin="normal"
             name={lastName}
             InputLabelProps={{
-              shrink: true
+              shrink: true,
             }}
             onChange={(e) => setLastname(e.target.value)}
           />
@@ -188,13 +190,13 @@ export default function PlayerForm(props) {
             margin="normal"
             name={dob}
             InputLabelProps={{
-              shrink: true
+              shrink: true,
             }}
             onChange={(e) => setDob(e.target.value)}
           />
 
           <FormControl variant="filled">
-            <InputLabel id="gradYear">Graduating Year</InputLabel>
+            <InputLabel id="gradYear">Class Of</InputLabel>
             <Select
               style={{ margin: 8, paddingRight: "40px" }}
               labelId="Position"
@@ -235,6 +237,24 @@ export default function PlayerForm(props) {
           </FormControl>
           <br />
           <TextField
+            id="height"
+            variant="filled"
+            label="Height"
+            style={{ margin: 8 }}
+            placeholder=""
+            type="text"
+            required
+            error={height ? true : false}
+            value={height}
+            helperText={height ? "" : "required"}
+            margin="normal"
+            name={dob}
+            InputLabelProps={{
+              shrink: true,
+            }}
+            onChange={(e) => setHeight(e.target.value)}
+          />
+          <TextField
             id="phone"
             label="Phone Number"
             style={{ margin: 8 }}
@@ -247,7 +267,7 @@ export default function PlayerForm(props) {
             margin="normal"
             name={phone}
             InputLabelProps={{
-              shrink: true
+              shrink: true,
             }}
             onChange={(e) => setPhone(e.target.value)}
           />
@@ -265,7 +285,7 @@ export default function PlayerForm(props) {
             margin="normal"
             name={email}
             InputLabelProps={{
-              shrink: true
+              shrink: true,
             }}
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -284,7 +304,7 @@ export default function PlayerForm(props) {
             variant="filled"
             name={mailing}
             InputLabelProps={{
-              shrink: true
+              shrink: true,
             }}
             onChange={(e) => setMailing(e.target.value)}
           />
@@ -302,7 +322,7 @@ export default function PlayerForm(props) {
             variant="filled"
             name={instagram}
             InputLabelProps={{
-              shrink: true
+              shrink: true,
             }}
             onChange={(e) => setInstagram(e.target.value)}
           />
@@ -318,7 +338,7 @@ export default function PlayerForm(props) {
             variant="filled"
             name={twitter}
             InputLabelProps={{
-              shrink: true
+              shrink: true,
             }}
             onChange={(e) => setTwitter(e.target.value)}
           />
@@ -334,7 +354,7 @@ export default function PlayerForm(props) {
             variant="filled"
             name={tiktok}
             InputLabelProps={{
-              shrink: true
+              shrink: true,
             }}
             onChange={(e) => setTiktok(e.target.value)}
           />
@@ -352,7 +372,7 @@ export default function PlayerForm(props) {
             margin="normal"
             name={guardianfname}
             InputLabelProps={{
-              shrink: true
+              shrink: true,
             }}
             onChange={(e) => setGuardianFname(e.target.value)}
           />
@@ -367,7 +387,7 @@ export default function PlayerForm(props) {
             margin="normal"
             name={guardianlname}
             InputLabelProps={{
-              shrink: true
+              shrink: true,
             }}
             onChange={(e) => setGuardianLname(e.target.value)}
           />
@@ -382,7 +402,7 @@ export default function PlayerForm(props) {
             margin="normal"
             name={relationship}
             InputLabelProps={{
-              shrink: true
+              shrink: true,
             }}
             onChange={(e) => setRelationship(e.target.value)}
           />
@@ -401,7 +421,7 @@ export default function PlayerForm(props) {
             margin="normal"
             name={gphone}
             InputLabelProps={{
-              shrink: true
+              shrink: true,
             }}
             onChange={(e) => setGphone(e.target.value)}
           />
@@ -418,7 +438,7 @@ export default function PlayerForm(props) {
             margin="normal"
             name={gemail}
             InputLabelProps={{
-              shrink: true
+              shrink: true,
             }}
             onChange={(e) => setGemail(e.target.value)}
           />
@@ -436,7 +456,7 @@ export default function PlayerForm(props) {
             variant="filled"
             name={gmailing}
             InputLabelProps={{
-              shrink: true
+              shrink: true,
             }}
             onChange={(e) => setGmailing(e.target.value)}
           />
@@ -455,7 +475,7 @@ export default function PlayerForm(props) {
             margin="normal"
             name={sat}
             InputLabelProps={{
-              shrink: true
+              shrink: true,
             }}
             onChange={(e) => setSAT(e.target.value)}
           />
@@ -471,7 +491,7 @@ export default function PlayerForm(props) {
             margin="normal"
             name={act}
             InputLabelProps={{
-              shrink: true
+              shrink: true,
             }}
             onChange={(e) => setACT(e.target.value)}
           />
@@ -487,7 +507,7 @@ export default function PlayerForm(props) {
             margin="normal"
             name={gpa}
             InputLabelProps={{
-              shrink: true
+              shrink: true,
             }}
             onChange={(e) => setGPA(e.target.value)}
           />
@@ -496,6 +516,7 @@ export default function PlayerForm(props) {
             label="Post-Secondary Field of Study Interest"
             style={{ margin: 8 }}
             placeholder=""
+            fullWidth
             variant="filled"
             error={field ? true : false}
             value={field}
@@ -503,7 +524,7 @@ export default function PlayerForm(props) {
             margin="normal"
             name={field}
             InputLabelProps={{
-              shrink: true
+              shrink: true,
             }}
             onChange={(e) => setField(e.target.value)}
           />
@@ -514,58 +535,62 @@ export default function PlayerForm(props) {
             label="Preferred Style of Play"
             style={{ margin: 8 }}
             placeholder=""
+            fullWidth
             value={style}
             variant="filled"
             error={style ? true : false}
             margin="normal"
             name={style}
             InputLabelProps={{
-              shrink: true
+              shrink: true,
             }}
             onChange={(e) => setStyle(e.target.value)}
           />
           <TextField
             id="favorite"
-            label="Favorite aspect of your game?"
+            label="Favorite aspect of your game"
             style={{ margin: 8 }}
             placeholder=""
             value={favorite}
             variant="filled"
+            fullWidth
             error={favorite ? true : false}
             margin="normal"
             name={favorite}
             InputLabelProps={{
-              shrink: true
+              shrink: true,
             }}
             onChange={(e) => setFavorite(e.target.value)}
           />
           <TextField
             id="develop"
-            label="Area in your game you’d like to develop?"
+            label="Area in your game you’d like to develop"
             style={{ margin: 8 }}
             placeholder=""
             value={develop}
+            fullWidth
             variant="filled"
             error={develop ? true : false}
             margin="normal"
             name={develop}
             InputLabelProps={{
-              shrink: true
+              shrink: true,
             }}
             onChange={(e) => setDevelop(e.target.value)}
           />
           <TextField
             id="interest"
-            label="INSTITUTIONS THAT HAVE SHOWN INTEREST"
+            label="Institutions that are showing interest"
             style={{ margin: 8 }}
             placeholder=""
             value={interest}
+            fullWidth
             variant="filled"
             error={interest ? true : false}
             margin="normal"
             name={interest}
             InputLabelProps={{
-              shrink: true
+              shrink: true,
             }}
             onChange={(e) => setInterest(e.target.value)}
           />
@@ -580,7 +605,7 @@ export default function PlayerForm(props) {
             margin="normal"
             name={commitment}
             InputLabelProps={{
-              shrink: true
+              shrink: true,
             }}
             onChange={(e) => setCommitment(e.target.value)}
           />
@@ -589,7 +614,7 @@ export default function PlayerForm(props) {
           <h3 style={{ textAlign: "LEFT" }}>WINTER TEAM</h3>
           <TextField
             id="winter"
-            label="Winter Team Name "
+            label="Winter Team Name"
             style={{ margin: 8 }}
             placeholder=""
             error={winter ? true : false}
@@ -598,13 +623,13 @@ export default function PlayerForm(props) {
             name={winter}
             variant="filled"
             InputLabelProps={{
-              shrink: true
+              shrink: true,
             }}
             onChange={(e) => setWinter(e.target.value)}
           />
           <TextField
             id="wleague"
-            label="Winter Team's League "
+            label="Winter Team's League"
             style={{ margin: 8 }}
             placeholder=""
             error={wleague ? true : false}
@@ -613,7 +638,7 @@ export default function PlayerForm(props) {
             margin="normal"
             name={wleague}
             InputLabelProps={{
-              shrink: true
+              shrink: true,
             }}
             onChange={(e) => setWLeague(e.target.value)}
           />
@@ -629,13 +654,13 @@ export default function PlayerForm(props) {
             variant="filled"
             name={winstagram}
             InputLabelProps={{
-              shrink: true
+              shrink: true,
             }}
             onChange={(e) => setWinstagram(e.target.value)}
           />
           <TextField
             id="wtwitter"
-            label="Team's Twitter "
+            label="Team's Twitter"
             style={{ margin: 8 }}
             placeholder=""
             error={wtwitter ? true : false}
@@ -644,7 +669,7 @@ export default function PlayerForm(props) {
             name={wtwitter}
             variant="filled"
             InputLabelProps={{
-              shrink: true
+              shrink: true,
             }}
             onChange={(e) => setWtwitter(e.target.value)}
           />
@@ -659,7 +684,7 @@ export default function PlayerForm(props) {
             variant="filled"
             name={wcoach}
             InputLabelProps={{
-              shrink: true
+              shrink: true,
             }}
             onChange={(e) => setWcoach(e.target.value)}
           />
@@ -675,7 +700,7 @@ export default function PlayerForm(props) {
             name={wcoachphone}
             variant="filled"
             InputLabelProps={{
-              shrink: true
+              shrink: true,
             }}
             onChange={(e) => setWcoachphone(e.target.value)}
           />
@@ -691,7 +716,7 @@ export default function PlayerForm(props) {
             variant="filled"
             name={wcoachemail}
             InputLabelProps={{
-              shrink: true
+              shrink: true,
             }}
             onChange={(e) => setWcoachemail(e.target.value)}
           />
@@ -709,14 +734,14 @@ export default function PlayerForm(props) {
             margin="normal"
             name={wjersy}
             InputLabelProps={{
-              shrink: true
+              shrink: true,
             }}
             onChange={(e) => setWjersy(e.target.value)}
           />
           <h3 style={{ textAlign: "LEFT" }}>SUMMER TEAM</h3>
           <TextField
             id="summer"
-            label="Summer Team Name "
+            label="Summer Team Name"
             style={{ margin: 8 }}
             placeholder=""
             error={summer ? true : false}
@@ -725,13 +750,13 @@ export default function PlayerForm(props) {
             margin="normal"
             name={summer}
             InputLabelProps={{
-              shrink: true
+              shrink: true,
             }}
             onChange={(e) => setSummer(e.target.value)}
           />
           <TextField
             id="sleague"
-            label="Summer Team's League "
+            label="Summer Team's League"
             style={{ margin: 8 }}
             placeholder=""
             error={sleague ? true : false}
@@ -740,7 +765,7 @@ export default function PlayerForm(props) {
             variant="filled"
             name={sleague}
             InputLabelProps={{
-              shrink: true
+              shrink: true,
             }}
             onChange={(e) => setSleague(e.target.value)}
           />
@@ -756,7 +781,7 @@ export default function PlayerForm(props) {
             variant="filled"
             name={sinstagram}
             InputLabelProps={{
-              shrink: true
+              shrink: true,
             }}
             onChange={(e) => setSinstagram(e.target.value)}
           />
@@ -771,7 +796,7 @@ export default function PlayerForm(props) {
             name={stwitter}
             variant="filled"
             InputLabelProps={{
-              shrink: true
+              shrink: true,
             }}
             onChange={(e) => setStwitter(e.target.value)}
           />
@@ -786,13 +811,13 @@ export default function PlayerForm(props) {
             variant="filled"
             name={scoach}
             InputLabelProps={{
-              shrink: true
+              shrink: true,
             }}
             onChange={(e) => setScoach(e.target.value)}
           />
           <TextField
             id="scoachphone"
-            type="number"
+            type="text"
             label="Coach's Number"
             style={{ margin: 8 }}
             placeholder=""
@@ -802,7 +827,7 @@ export default function PlayerForm(props) {
             variant="filled"
             name={scoachphone}
             InputLabelProps={{
-              shrink: true
+              shrink: true,
             }}
             onChange={(e) => setScoachphone(e.target.value)}
           />
@@ -818,7 +843,7 @@ export default function PlayerForm(props) {
             variant="filled"
             name={scoachemail}
             InputLabelProps={{
-              shrink: true
+              shrink: true,
             }}
             onChange={(e) => setScoachemail(e.target.value)}
           />
@@ -836,7 +861,7 @@ export default function PlayerForm(props) {
             margin="normal"
             name={sjersy}
             InputLabelProps={{
-              shrink: true
+              shrink: true,
             }}
             onChange={(e) => setSjersy(e.target.value)}
           />
@@ -854,7 +879,7 @@ export default function PlayerForm(props) {
             margin="normal"
             name={image}
             InputLabelProps={{
-              shrink: true
+              shrink: true,
             }}
             onChange={(e) => setImage(e.target.value)}
           />
@@ -878,7 +903,7 @@ export default function PlayerForm(props) {
             margin="normal"
             name={youtube}
             InputLabelProps={{
-              shrink: true
+              shrink: true,
             }}
             onChange={(e) => setYoutube(e.target.value)}
           />

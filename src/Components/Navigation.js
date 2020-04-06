@@ -12,25 +12,25 @@ import {
   Typography,
   Toolbar,
   AppBar,
-  Hidden
+  Hidden,
 } from "@material-ui/core/";
 
 import "../../src/App.css";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   menuButton: {
-    marginRight: theme.spacing(2)
+    marginRight: theme.spacing(2),
   },
   title: {
-    flexGrow: 2
+    flexGrow: 2,
   },
   menuItem: {
-    margin: `auto 10px`
+    margin: `auto 10px`,
   },
-  menuItems: {}
+  menuItems: {},
 }));
 
 const primary = grey[900];
@@ -76,7 +76,12 @@ function Navigation() {
             </Hidden>
           </div>
           {online && (
-            <Button color="inherit" onClick={logout()}>
+            <Button
+              color="inherit"
+              onClick={(e) => {
+                logout();
+              }}
+            >
               <Link to="">Logout</Link>
             </Button>
           )}
