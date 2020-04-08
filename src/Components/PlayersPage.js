@@ -8,17 +8,17 @@ import { useFirebase } from "../Components/Firebase/FirebaseContext";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
   },
 
   headingText: {
     fontSize: "3.5rem",
     fontFamily: "Anton, sans-serif",
-    marginBottom: 0
+    marginBottom: 0,
   },
   contentWrap: {
-    marginBottom: "120px"
-  }
+    marginBottom: "120px",
+  },
 }));
 
 function PlayersPage() {
@@ -29,7 +29,7 @@ function PlayersPage() {
 
   useEffect(() => {
     firebase.list("PSA", setPlayers);
-  }, []);
+  }, [firebase]);
 
   const classes = useStyles();
   return (
@@ -44,17 +44,13 @@ function PlayersPage() {
             >
               Make It <span className="standOutText">Players</span>
             </Typography>
-            <Grid
-              container
-              direction="row"
-              justify="center"
-              alignItems="center"
-            >
+            <div className={classes.root}>
               <Grid
                 container
                 direction="row"
                 justify="space-around"
                 alignItems="center"
+                // alignItems="center"
               >
                 {!players && <h3>Getting The Ballers!</h3>}
                 {players &&
@@ -62,7 +58,7 @@ function PlayersPage() {
                     <PlayerItem player={player} key={player.id} />
                   ))}
               </Grid>
-            </Grid>
+            </div>
           </div>
         </Container>
       </Container>

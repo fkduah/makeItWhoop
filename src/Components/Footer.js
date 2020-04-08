@@ -10,18 +10,19 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     top: "auto",
     bottom: 0,
-    position: "fixed",
+    // position: "fixed",
     left: 0,
-    width: "100%"
+    width: "100%",
+    marginTop: 50,
   },
 
   copyright: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   menuItem: {
-    margin: `auto 10px`
+    margin: `auto 10px`,
   },
-  menuItems: {}
+  menuItems: {},
 }));
 
 const primary = grey[900];
