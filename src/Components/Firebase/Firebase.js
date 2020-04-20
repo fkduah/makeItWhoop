@@ -52,6 +52,17 @@ class Firebase {
       });
   };
 
+  // Get Player
+  thePlayer = (id, stateSetter) => {
+    firestore()
+      .collection("PSA")
+      .doc(id)
+      .onSnapshot(function (doc) {
+        const player = doc.data();
+        stateSetter(player);
+      });
+  };
+
   // listen to auth status change
 
   userLoginWatch = (updateState) => {

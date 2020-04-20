@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
@@ -45,35 +46,36 @@ export default function PlayerItem({ player }) {
   const classes = useStyles();
 
   return (
-    <Card xs={6} elevation={15} className={classes.root}>
-      <div className={classes.details}>
-        <CardContent className={classes.content}>
-          <Typography component="h5" variant="h5" className={classes.name}>
-            {player["firstName"]}{" "}
-            <span style={{ color: "#f50057", fontFamily: "Anton" }}>
-              {player["lastName"]}
-            </span>
-          </Typography>
-          <Typography variant="subtitle1" color="textPrimary">
-            Position: <strong> {player["position"]}</strong>
-          </Typography>
-          <Typography variant="subtitle1" color="textPrimary">
-            Height: <strong> {player["height"]}</strong>
-          </Typography>
-
-          <Typography variant="subtitle1" color="textPrimary">
-            Class Of <strong>{player["gradYear"]}</strong>
-          </Typography>
-          <IconButton aria-label="add to favorites">
-            <FavoriteIcon />
-          </IconButton>
-        </CardContent>
-      </div>
-      <Avatar
-        alt={[player["firstName"], player["lastName"]].toString()}
-        src={player["profilePicURL"]}
-        className={classes.avatar}
-      />
-    </Card>
+    <Link to={`/players/${player["id"]}`}>
+      <Card xs={6} elevation={15} className={classes.root}>
+        <div className={classes.details}>
+          <CardContent className={classes.content}>
+            <Typography component="h5" variant="h5" className={classes.name}>
+              {player["firstName"]}{" "}
+              <span style={{ color: "#f50057", fontFamily: "Anton" }}>
+                {player["lastName"]}
+              </span>
+            </Typography>
+            <Typography variant="subtitle1" color="textPrimary">
+              Position: <strong> {player["position"]}</strong>
+            </Typography>
+            <Typography variant="subtitle1" color="textPrimary">
+              Height: <strong> {player["height"]}</strong>
+            </Typography>
+            <Typography variant="subtitle1" color="textPrimary">
+              School: <strong>{player["winterTeam"]}</strong>
+            </Typography>
+            <IconButton aria-label="add to favorites">
+              <FavoriteIcon />
+            </IconButton>
+          </CardContent>
+        </div>
+        <Avatar
+          alt={[player["firstName"], player["lastName"]].toString()}
+          src={player["profilePicURL"]}
+          className={classes.avatar}
+        />
+      </Card>
+    </Link>
   );
 }

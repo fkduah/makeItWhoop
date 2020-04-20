@@ -25,7 +25,6 @@ function PlayersPage() {
   const [players, setPlayers] = useState();
 
   const firebase = useFirebase();
-  console.log(players);
 
   useEffect(() => {
     firebase.list("PSA", setPlayers);
