@@ -13,23 +13,23 @@ import logo from "../logo.png";
 
 const useStyles = makeStyles({
   list: {
-    width: 250
+    width: 250,
   },
   fullList: {
-    width: "auto"
-  }
+    width: "auto",
+  },
 });
 
 const fonts = { fontSize: `14px`, color: `#212121` };
 
 function ListItemLink(props) {
-  return <ListItem button component="a" {...props} />;
+  return <ListItem button {...props} />;
 }
 
 export default function NavigationToggle() {
   const classes = useStyles();
   const [state, setState] = React.useState({
-    left: false
+    left: false,
   });
 
   const toggleDrawer = (side, open) => (event) => {
@@ -52,25 +52,21 @@ export default function NavigationToggle() {
     >
       <List>
         <img src={logo} alt={"Make It Whoop Logo"} style={{ width: `15rem` }} />
-        <ListItemLink>
-          <Link to="/">
-            <ListItemText primary="Home" style={fonts} />
-          </Link>
+
+        <ListItemLink component={Link} to="/">
+          <ListItemText primary="Home" style={fonts} />
         </ListItemLink>
-        <ListItemLink>
-          <Link to="/about">
-            <ListItemText primary="About" style={fonts} />
-          </Link>
+
+        <ListItemLink component={Link} to="/about">
+          <ListItemText primary="About" style={fonts} />
         </ListItemLink>
-        <ListItemLink>
-          <Link to="/registration">
-            <ListItemText primary="Registration" style={fonts} />
-          </Link>
+
+        <ListItemLink component={Link} to="/registration">
+          <ListItemText primary="Registration" style={fonts} />
         </ListItemLink>
-        <ListItemLink>
-          <Link to="/contact">
-            <ListItemText primary="Contact" style={fonts} />
-          </Link>
+
+        <ListItemLink component={Link} to="/contact">
+          <ListItemText primary="Contact" style={fonts} />
         </ListItemLink>
       </List>
     </div>

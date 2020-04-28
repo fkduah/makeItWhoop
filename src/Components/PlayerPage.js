@@ -6,7 +6,9 @@ import {
   Grid,
   Paper,
   Avatar,
+  Button,
 } from "@material-ui/core";
+import AccountBoxIcon from "@material-ui/icons/AccountBox";
 
 import { useFirebase } from "../Components/Firebase/FirebaseContext";
 
@@ -30,6 +32,8 @@ const useStyles = makeStyles((theme) => ({
   },
   profileTitle: {
     color: `#f50057`,
+    fontWeight: 600,
+    marginTop: `10px`,
   },
   additionalDetails: {
     marginTop: `30px`,
@@ -43,6 +47,8 @@ export default function PlayerPage(props) {
   const classes = useStyles();
 
   const [player, setPlayer] = useState();
+  const [profile, setProfile] = useState(false);
+  const [post, setPost] = useState();
 
   const firebase = useFirebase();
 
@@ -66,90 +72,186 @@ export default function PlayerPage(props) {
             </Typography>
             {player && (
               <Grid className={classes.profileHeading} container spacing={3}>
-                <Grid item xs={12} md={6}>
-                  <Avatar
-                    variant="rounded"
-                    className={classes.profileImgWrap}
-                    src={player["profilePicURL"]}
-                  ></Avatar>
+                <Grid item xs={12} md={5}>
+                  <Paper elevation={20}>
+                    <Avatar
+                      variant="rounded"
+                      className={classes.profileImgWrap}
+                      src={player["profilePicURL"]}
+                    ></Avatar>
+                  </Paper>
                 </Grid>
-                <Grid item xs={12} md={6}>
+                <Grid item xs={12} md={7}>
                   <Paper
+                    elevation={20}
                     style={{
-                      paddingTop: `50px`,
-                      paddingLeft: `20px`,
+                      padding: `15px`,
                       textAlign: `left`,
                     }}
                     className={classes.paper}
                   >
-                    <Typography variant="h5" component="h5">
-                      <strong className={classes.profileTitle}>The</strong>{" "}
-                      Baller
-                    </Typography>
-                    <br />
-                    <Typography variant="h5" component="h5">
-                      <strong>Position:</strong> {player[`position`]}
-                    </Typography>
-                    <Typography variant="h5" component="h5">
-                      <strong>Height:</strong> {player[`height`]}
-                    </Typography>
-                    <Typography variant="h5" component="h5">
-                      <strong>Date of Birth:</strong> {player[`DOB`]}
-                    </Typography>
-                    <Typography variant="h5" component="h5">
-                      <strong>School Team:</strong> {player[`winterTeam`]}
-                    </Typography>
-                    <Typography variant="h5" component="h5">
-                      <strong>Graduation Year:</strong> {player[`gradYear`]}
-                    </Typography>
-                    <br />
-                    <Typography variant="h5" component="h5">
-                      <strong className={classes.profileTitle}>Social</strong>{" "}
-                      Media
-                    </Typography>
-                    <Typography variant="h5" component="h5">
-                      <strong>Instagram:</strong> {player[`instagram`]}
-                    </Typography>
-                    <Typography variant="h5" component="h5">
-                      <strong>Twitter:</strong> {player[`twitter`]}
-                    </Typography>
-                    <Typography variant="h5" component="h5">
-                      <strong>Tik Tok:</strong> {player[`tiktok`]}
-                    </Typography>
-                    <Typography variant="h5" component="h5">
-                      <br />
-                      <strong className={classes.profileTitle}>Contact</strong>
-                      Info
-                    </Typography>
+                    <Grid container spacing={3}>
+                      <Grid item xs={12} md={3}>
+                        <Typography
+                          variant="body2"
+                          component="p"
+                          className={classes.profileTitle}
+                        >
+                          Position:
+                        </Typography>
+                        <Typography variant="h5" component="h5">
+                          <strong>{player[`position`]}</strong>
+                        </Typography>
+
+                        <Typography
+                          variant="body2"
+                          component="p"
+                          className={classes.profileTitle}
+                        >
+                          Height:
+                        </Typography>
+                        <Typography variant="h5" component="h5">
+                          <strong>{player[`height`]}</strong>
+                        </Typography>
+
+                        <Typography
+                          variant="body2"
+                          component="p"
+                          className={classes.profileTitle}
+                        >
+                          Date of Birth:
+                        </Typography>
+                        <Typography variant="h5" component="h5">
+                          <strong>{player[`DOB`]}</strong>
+                        </Typography>
+
+                        <Typography
+                          variant="body2"
+                          component="p"
+                          className={classes.profileTitle}
+                        >
+                          School Team:
+                        </Typography>
+                        <Typography variant="h5" component="h5">
+                          <strong> {player[`winterTeam`]}</strong>
+                        </Typography>
+
+                        <Typography
+                          variant="body2"
+                          component="p"
+                          className={classes.profileTitle}
+                        >
+                          Graduation Year:
+                        </Typography>
+                        <Typography variant="h5" component="h5">
+                          <strong>{player[`gradYear`]}</strong>
+                        </Typography>
+                      </Grid>
+                      <Grid item xs={12} md={9}>
+                        <Typography
+                          variant="body2"
+                          component="p"
+                          className={classes.profileTitle}
+                        >
+                          Favorite Move:
+                        </Typography>
+                        <Typography variant="body1" component="h5">
+                          <strong>{player[`favorite`]}</strong>
+                        </Typography>
+                        <Typography
+                          variant="body2"
+                          component="p"
+                          className={classes.profileTitle}
+                        >
+                          What Your Looking To Develop:
+                        </Typography>
+                        <Typography variant="body1" component="h5">
+                          <strong>{player[`develop`]}</strong>
+                        </Typography>
+                        <Typography
+                          variant="body2"
+                          component="p"
+                          className={classes.profileTitle}
+                        >
+                          Social Media:
+                        </Typography>
+                        <Typography variant="body2" component="h5">
+                          {(player.tiktok !== "na" || "") && (
+                            <span>
+                              Tik Tok: <strong>{player[`tiktok`]}</strong>
+                              <br />
+                            </span>
+                          )}
+                          {player.twitter && (
+                            <span>
+                              Twitter:{" "}
+                              <strong>
+                                <a
+                                  href={`https://www.twitter.com/${player[
+                                    `twitter`
+                                  ].replace("@", "")}`}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  style={{ color: "#212121" }}
+                                >
+                                  {player[`twitter`]}
+                                </a>
+                              </strong>
+                              <br />
+                            </span>
+                          )}
+                          {player.instagram && (
+                            <span>
+                              Instagram:{" "}
+                              <strong>
+                                <a
+                                  href={`https://www.instagram.com/${player[
+                                    `instagram`
+                                  ].replace("@", "")}`}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  style={{ color: "#212121" }}
+                                >
+                                  {player[`instagram`]}
+                                </a>
+                              </strong>
+                              <br />
+                            </span>
+                          )}
+                        </Typography>
+                        <Typography
+                          variant="body2"
+                          component="p"
+                          className={classes.profileTitle}
+                        >
+                          Contact{" "}
+                          <a
+                            href={`mailto:www.makeitwhoop@gmail.com`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{ color: "#f50057" }}
+                          >
+                            {player.firstName}
+                          </a>
+                        </Typography>
+                      </Grid>
+                    </Grid>
                   </Paper>
+                  <Button
+                    onClick={() => setProfile(!profile)}
+                    style={{ marginTop: `10px` }}
+                    variant="contained"
+                    color="primary"
+                    startIcon={<AccountBoxIcon />}
+                  >
+                    Edit Profile
+                  </Button>
+                  <br />
+                  {profile && <>Show Form</>}
                 </Grid>
                 <Paper className={classes.additionalDetails}>
                   <Grid item xs={12}>
-                    <Typography
-                      variant="h5"
-                      component="h5"
-                      style={{ paddingTop: `20px` }}
-                    >
-                      <strong className={classes.profileTitle}>Favorite</strong>{" "}
-                      Move
-                    </Typography>
-                    <Typography variant="body1" component="h6">
-                      <strong>{player[`favorite`]}</strong>
-                    </Typography>
-
-                    <Typography
-                      variant="h5"
-                      component="h5"
-                      style={{ paddingTop: `20px` }}
-                    >
-                      <strong className={classes.profileTitle}>
-                        What Your Looking To
-                      </strong>{" "}
-                      Develop
-                    </Typography>
-                    <Typography variant="body1" component="h6">
-                      <strong>{player[`develop`]}</strong>
-                    </Typography>
+                    Updates
                   </Grid>
                 </Paper>
               </Grid>

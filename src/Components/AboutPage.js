@@ -42,7 +42,7 @@ function AboutPage() {
         </div>
       </Container>
 
-      <div maxWidth={false} className="">
+      <div width={100} className="">
         <Container fixed className="sectionTwoFixedWrapper">
           <div className={classes.contentWrap}>
             <Typography
