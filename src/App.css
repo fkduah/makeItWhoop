@@ -1,6 +1,9 @@
 * {
   font-family: "Roboto", sans-serif;
 }
+body {
+  overflow-x: hidden;
+}
 
 .MuiPaper-root.MuiDrawer-paper.MuiDrawer-paperAnchorLeft.MuiPaper-elevation16 {
   background-color: #fafafa;

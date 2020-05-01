@@ -10,7 +10,6 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     top: "auto",
     bottom: 0,
-    // position: "fixed",
     left: 0,
     width: "100%",
     marginTop: 50,

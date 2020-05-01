@@ -63,6 +63,17 @@ class Firebase {
       });
   };
 
+  // Add A Post
+  thePost = (id, postFields) => {
+    // firestore().collection("Players-Post").doc(id).set(postFields);
+    firestore()
+      .collection("Players-Post")
+      .doc(id)
+      .update({
+        post: firebase.firestore.FieldValue.arrayUnion(postFields),
+      });
+  };
+
   // listen to auth status change
 
   userLoginWatch = (updateState) => {

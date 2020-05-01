@@ -1,7 +1,5 @@
 import React from "react";
 
-import headerImage from "../../src/about-Us.png";
-
 import { Container, makeStyles, Typography } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
@@ -33,15 +31,6 @@ function AboutPage() {
   const classes = useStyles();
   return (
     <>
-      <Container
-        maxWidth={false}
-        style={{ paddingLeft: "0px", paddingRight: "0px" }}
-      >
-        <div className="animated fadeInDownBig">
-          <img src={headerImage} className={classes.topImage} alt="About Us" />
-        </div>
-      </Container>
-
       <div width={100} className="">
         <Container fixed className="sectionTwoFixedWrapper">
           <div className={classes.contentWrap}>
