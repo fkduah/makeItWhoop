@@ -74,7 +74,6 @@ export default function PlayerPage(props) {
     content: "",
     imageURL: "",
     videoURL: "",
-    title: "",
   });
 
   function handlePost(evt) {
