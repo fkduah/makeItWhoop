@@ -65,12 +65,25 @@ class Firebase {
 
   // Add A Post
   thePost = (id, postFields) => {
-    // firestore().collection("Players-Post").doc(id).set(postFields);
+    firestore()
+      .collection("Players-Post")
+      .doc(`${id}`)
+      .set(
+        {
+          post: firebase.firestore.FieldValue.arrayUnion(postFields),
+        },
+        { merge: true }
+      );
+  };
+
+  // Get The Post
+  getPost = (id, setState) => {
     firestore()
       .collection("Players-Post")
       .doc(id)
-      .update({
-        post: firebase.firestore.FieldValue.arrayUnion(postFields),
+      .onSnapshot(function (doc) {
+        const post = doc.data();
+        setState(post);
       });
   };
 

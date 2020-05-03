@@ -258,8 +258,10 @@ export default function PlayerForm(props) {
             id="phone"
             label="Phone Number"
             style={{ margin: 8 }}
-            placeholder=""
+            placeholder="123-456-7890"
             required
+            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+            type="tel"
             variant="filled"
             error={phone ? true : false}
             value={phone}
@@ -412,8 +414,10 @@ export default function PlayerForm(props) {
             id="gphone"
             label="Gaurdian's Phone Number"
             style={{ margin: 8 }}
-            placeholder=""
+            placeholder="123-456-7890"
             required
+            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+            type="tel"
             variant="filled"
             error={gphone ? true : false}
             value={gphone}
@@ -690,10 +694,11 @@ export default function PlayerForm(props) {
           />
           <TextField
             id="wcoachphone"
-            type="number"
             label="Coach's Number"
             style={{ margin: 8 }}
-            placeholder=""
+            placeholder="123-456-7890"
+            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+            type="tel"
             error={wcoachphone ? true : false}
             value={wcoachphone}
             margin="normal"
@@ -817,10 +822,11 @@ export default function PlayerForm(props) {
           />
           <TextField
             id="scoachphone"
-            type="text"
+            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+            type="tel"
             label="Coach's Number"
             style={{ margin: 8 }}
-            placeholder=""
+            placeholder="123-456-7890"
             error={scoachphone ? true : false}
             value={scoachphone}
             margin="normal"

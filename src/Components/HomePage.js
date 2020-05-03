@@ -16,16 +16,16 @@ import {
   Button,
   Typography,
   Box,
-  makeStyles
+  makeStyles,
 } from "@material-ui/core/";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   thirdwrapper: {
-    marginBottom: 50
-  }
+    marginBottom: 50,
+  },
 }));
 
 function HomePage() {

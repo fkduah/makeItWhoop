@@ -16,6 +16,7 @@ import {
 import AccountBoxIcon from "@material-ui/icons/AccountBox";
 import PostAddIcon from "@material-ui/icons/PostAdd";
 import CancelPresentationIcon from "@material-ui/icons/CancelPresentation";
+import Alert from "@material-ui/lab/Alert";
 
 import Iframe from "react-iframe";
 
@@ -63,7 +64,9 @@ export default function PlayerPage(props) {
   const [player, setPlayer] = useState();
   const [profile, setProfile] = useState(false);
   const [post, setPost] = useState(false);
-  const [field, setfield] = useState({
+  const [posts, setPosts] = useState();
+  const [erpost, seterPost] = useState(false);
+  const [field, setField] = useState({
     media: "",
     postContent: "",
     imageURL: "",
@@ -71,8 +74,9 @@ export default function PlayerPage(props) {
   });
 
   function handlePost(evt) {
+    evt.preventDefault();
     const value = evt.target.value;
-    setfield({
+    setField({
       ...field,
       [evt.target.name]: value,
     });
@@ -80,17 +84,33 @@ export default function PlayerPage(props) {
 
   const handleSubmitPost = (e) => {
     e.preventDefault();
-    firebase.thePost(props.match.params.id, {
-      date: new Date(),
-      field,
-    });
+    if (field.postContent.length < 1) {
+      seterPost(true);
+      return;
+    } else {
+      firebase.thePost(props.match.params.id, {
+        date: new Date(),
+        field,
+      });
+      setField({
+        media: "",
+        postContent: "",
+        imageURL: "",
+        videoURL: "",
+      });
+      setPost(false);
+      seterPost(false);
+    }
   };
 
   useEffect(() => {
+    firebase.getPost(props.match.params.id, setPosts);
     firebase.thePlayer(props.match.params.id, setPlayer);
   }, [firebase, props.match.params.id]);
 
   console.log(player);
+  console.log(props.match.params.id);
+
   return (
     <>
       <Container maxWidth={false} className="sectionTwoFluidWrapper">
@@ -271,7 +291,10 @@ export default function PlayerPage(props) {
                   <div style={{ textAlign: "left" }}>
                     {!post && (
                       <Button
-                        onClick={() => setPost(!post)}
+                        onClick={() => {
+                          setPost(!post);
+                          seterPost(false);
+                        }}
                         style={{ marginTop: `10px`, marginRight: 5 }}
                         variant="contained"
                         color="secondary"
@@ -320,7 +343,13 @@ export default function PlayerPage(props) {
                             }}
                           />
                         )}
-
+                        {erpost && (
+                          <div>
+                            <Alert severity="error">
+                              Don't forget to provide the details!
+                            </Alert>
+                          </div>
+                        )}
                         <form onSubmit={handleSubmitPost}>
                           <TextField
                             fullWidth
@@ -407,11 +436,22 @@ export default function PlayerPage(props) {
                   </div>
                   {profile && <div>Show Form</div>}
                 </Grid>
-                <Grid item xs={12}>
-                  <Paper className={classes.additionalDetails}>
-                    List Of Post
-                  </Paper>
-                </Grid>
+                {posts &&
+                  posts.post.map((post) => (
+                    <Grid
+                      key={post.date}
+                      container
+                      direction="column"
+                      justify="space-between"
+                      alignItems="center"
+                    >
+                      <Grid item xs={12}>
+                        <Paper className={classes.additionalDetails}>
+                          Test
+                        </Paper>
+                      </Grid>
+                    </Grid>
+                  ))}
               </Grid>
             )}
           </div>
