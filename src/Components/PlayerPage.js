@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import PostItem from "../Components/PosItem";
 import {
   Container,
   makeStyles,
@@ -66,11 +67,14 @@ export default function PlayerPage(props) {
   const [post, setPost] = useState(false);
   const [posts, setPosts] = useState();
   const [erpost, seterPost] = useState(false);
+  const [ertitle, seterTitle] = useState(false);
   const [field, setField] = useState({
     media: "",
-    postContent: "",
+    title: "",
+    content: "",
     imageURL: "",
     videoURL: "",
+    title: "",
   });
 
   function handlePost(evt) {
@@ -84,23 +88,22 @@ export default function PlayerPage(props) {
 
   const handleSubmitPost = (e) => {
     e.preventDefault();
-    if (field.postContent.length < 1) {
+    if (field.content.length < 1) {
       seterPost(true);
-      return;
-    } else {
-      firebase.thePost(props.match.params.id, {
-        date: new Date(),
-        field,
-      });
-      setField({
-        media: "",
-        postContent: "",
-        imageURL: "",
-        videoURL: "",
-      });
-      setPost(false);
-      seterPost(false);
     }
+
+    if (!field.title) {
+      seterTitle(true);
+      return;
+    }
+    firebase.thePost(props.match.params.id, {
+      date: new Date(),
+      field,
+    });
+    setField(field);
+    setPost(false);
+    seterPost(false);
+    seterTitle(false);
   };
 
   useEffect(() => {
@@ -343,6 +346,13 @@ export default function PlayerPage(props) {
                             }}
                           />
                         )}
+                        {ertitle && (
+                          <div>
+                            <Alert severity="error">
+                              Don't forget to provide a title
+                            </Alert>
+                          </div>
+                        )}
                         {erpost && (
                           <div>
                             <Alert severity="error">
@@ -352,19 +362,32 @@ export default function PlayerPage(props) {
                         )}
                         <form onSubmit={handleSubmitPost}>
                           <TextField
+                            id="title"
+                            label="Title"
+                            variant="filled"
+                            style={{ margin: 8 }}
+                            helperText="required"
+                            margin="normal"
+                            name="title"
+                            InputLabelProps={{
+                              shrink: true,
+                            }}
+                            onChange={handlePost}
+                          />
+                          <TextField
                             fullWidth
-                            id="postContent"
+                            id="content"
                             label="details"
                             style={{ margin: 8 }}
                             placeholder=""
-                            error={field.postContent ? true : false}
+                            error={field.content ? true : false}
                             helperText="required"
                             margin="normal"
                             multiline
                             rowsMax="4"
-                            value={field.postContent}
+                            value={field.content}
                             variant="filled"
-                            name="postContent"
+                            name="content"
                             InputLabelProps={{
                               shrink: true,
                             }}
@@ -447,7 +470,7 @@ export default function PlayerPage(props) {
                     >
                       <Grid item xs={12}>
                         <Paper className={classes.additionalDetails}>
-                          Test
+                          <PostItem post={post} />
                         </Paper>
                       </Grid>
                     </Grid>
