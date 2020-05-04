@@ -8,7 +8,7 @@ import headerImage from "../../src/MakeItWhoop-Illustration.svg";
 import player from "../../src/highschool-grid-03.jpg";
 import recruiter from "../../src/coach-recruit.jpg";
 import schoolCoach from "../../src/high-school-grid-01.jpg";
-import logo from "../../src/logo2.png";
+import logo from "../../src/logo192.png";
 
 import {
   Container,
@@ -140,16 +140,6 @@ function HomePage() {
                     title="Recruiters"
                     content="Canadian girls basketball is the best it’s ever been, and this is how you can keep up with your busy schedule! View player profiles and recruitment information, and scroll through their timeline for recent news and accomplishments here!"
                     imageTitle="Recruiter Images"
-                  />
-                </Link>
-              </Box>
-              <Box className="animated fadeInUp">
-                <Link to="/login">
-                  <Card
-                    image={schoolCoach}
-                    title="High School Coaches"
-                    content="Make it Whoop is here to help your program succeed and your players reach their potential. We offer a variety of seminar and coaching options to help you fill the gaps."
-                    imageTitle="High School Coaches"
                   />
                 </Link>
               </Box>

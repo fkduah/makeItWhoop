@@ -59,7 +59,7 @@ function Navigation() {
           </Hidden>
 
           <Typography variant="h5" className={classes.title}>
-            <Link to="/">Make It Happen</Link>
+            <Link to="/">Hoopers Loop</Link>
           </Typography>
 
           <div style={{ margin: `auto 5%`, display: `flex` }}>

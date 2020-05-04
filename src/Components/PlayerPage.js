@@ -110,9 +110,6 @@ export default function PlayerPage(props) {
     firebase.thePlayer(props.match.params.id, setPlayer);
   }, [firebase, props.match.params.id]);
 
-  console.log(player);
-  console.log(props.match.params.id);
-
   return (
     <>
       <Container maxWidth={false} className="sectionTwoFluidWrapper">
@@ -306,7 +303,7 @@ export default function PlayerPage(props) {
                         Create Post
                       </Button>
                     )}
-                    <Button
+                    {/*  <Button
                       onClick={() => setProfile(!profile)}
                       style={{ marginTop: `10px`, marginLeft: 5 }}
                       variant="contained"
@@ -315,7 +312,7 @@ export default function PlayerPage(props) {
                       disabled={post ? true : false}
                     >
                       Edit Profile
-                    </Button>
+                 </Button> */}
                   </div>
                   <br />
                   <div style={{ textAlign: "left" }}>
@@ -459,21 +456,15 @@ export default function PlayerPage(props) {
                   {profile && <div>Show Form</div>}
                 </Grid>
                 {posts &&
-                  posts.post.map((post) => (
-                    <Grid
-                      key={post.date}
-                      container
-                      direction="column"
-                      justify="space-between"
-                      alignItems="center"
-                    >
-                      <Grid item xs={12}>
-                        <Paper className={classes.additionalDetails}>
-                          <PostItem post={post} />
-                        </Paper>
-                      </Grid>
-                    </Grid>
-                  ))}
+                  posts.post
+                    .reverse()
+                    .map((post) => (
+                      <PostItem
+                        post={post}
+                        key={post.date}
+                        id={props.match.params.id}
+                      />
+                    ))}
               </Grid>
             )}
           </div>

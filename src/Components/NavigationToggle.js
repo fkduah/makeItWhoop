@@ -9,7 +9,7 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import { Link } from "react-router-dom";
 
-import logo from "../logo.png";
+import logo from "../logo192.png";
 
 const useStyles = makeStyles({
   list: {
@@ -61,8 +61,8 @@ export default function NavigationToggle() {
           <ListItemText primary="About" style={fonts} />
         </ListItemLink>
 
-        <ListItemLink component={Link} to="/registration">
-          <ListItemText primary="Registration" style={fonts} />
+        <ListItemLink component={Link} to="/players">
+          <ListItemText primary="Players" style={fonts} />
         </ListItemLink>
 
         <ListItemLink component={Link} to="/contact">

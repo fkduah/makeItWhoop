@@ -40,7 +40,7 @@ function AboutPage() {
               className={classes.headingText}
               style={{ marginTop: 50 }}
             >
-              ABOUT MAKE IT <span className="standOutText">WHOOP</span>
+              Hoopers <span className="standOutText">Loop</span>
             </Typography>
             <Typography
               variant="h6"
@@ -48,7 +48,7 @@ function AboutPage() {
               className={classes.leadSentence}
             >
               Customized one stop solutions with the{" "}
-              <span className="standOutText">WHOoper </span>in mind!
+              <span className="standOutText">Hooper </span>in mind!
             </Typography>
 
             <p style={{ textAlign: "left" }}>

@@ -36,16 +36,17 @@ function Footer() {
     <div className={classes.root}>
       <AppBar position="static" style={{ display: "flex" }}>
         <Toolbar style={{ backgroundColor: primary }}>
-          <p className={classes.copyright}>&copy; Make It Happen {year}</p>
+          <p className={classes.copyright}>&copy; Hoopers Loop {year}</p>
           <div style={{ margin: `auto 5%`, display: `flex` }}>
             <p className={classes.menuItem}>
-              <a href="/#">Facebook</a>
+              <a href="https://www.instagram.com/hoopersloop/" targer="_blank">
+                Instagram
+              </a>
             </p>
             <p className={classes.menuItem}>
-              <a href="/#">Instagram</a>
-            </p>
-            <p className={classes.menuItem}>
-              <a href="/#">Social</a>
+              <a href="https://twitter.com/hoopersloop/" targer="_blank">
+                Twitter
+              </a>
             </p>
           </div>
         </Toolbar>

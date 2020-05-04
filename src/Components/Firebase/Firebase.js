@@ -76,6 +76,17 @@ class Firebase {
       );
   };
 
+  //  Delete Post
+
+  deletePost = (id, deleteFields) => {
+    firestore()
+      .collection("Players-Post")
+      .doc(`${id}`)
+      .update({
+        post: firebase.firestore.FieldValue.arrayRemove(deleteFields),
+      });
+  };
+
   // Get The Post
   getPost = (id, setState) => {
     firestore()
