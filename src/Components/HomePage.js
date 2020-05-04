@@ -42,11 +42,11 @@ function HomePage() {
               className="headerIntro"
               style={{ marginBottom: "100px" }}
             >
-              <img src={logo} alt="Make It Happen" style={{ width: "150px" }} />
+              <img src={logo} alt="H\Hoopers Loop" style={{ width: "150px" }} />
               <h1 className="animated fadeInLeftBig fadeIn pageTitle">
                 Welcome To
                 <br />
-                Make It Whoop
+                Hoopers Loop
               </h1>
               <h4 className="headerDesc animated fadeInUpBig delay-2s">
                 Your <span className="highlighted">one-stop-shop</span> for
@@ -78,7 +78,7 @@ function HomePage() {
             Intro"
                 style={{ maxHeight: "400px" }}
               >
-                make It whoop Intro
+                Hoopers Loop Intro
               </object>
             </Grid>
           </Grid>
@@ -93,7 +93,7 @@ function HomePage() {
             More Than A <span className="standOutText">Game</span>
           </Typography>
           <p>
-            As an athlete growing …” change to “Make it Whoop provides holistic
+            As an athlete growing …” change to “Hoopers Loop provides holistic
             guidance and mentorship from Canadian women who have lived their
             Whoop dreams, and want to equip you with the tools you need on and
             off the court.
