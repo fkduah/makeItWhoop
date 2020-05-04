@@ -52,7 +52,7 @@ function AboutPage() {
             </Typography>
 
             <p style={{ textAlign: "left" }}>
-              Make it WHOop is a one stop shop, aimed at equipping & enabling
+              Hoopers Loop is a one stop shop, aimed at equipping & enabling
               every WHOoper as they make efforts to realize their athletic
               potential, achieve their post -secondary academic goals & define
               WHO they truly are along the way.
@@ -60,19 +60,19 @@ function AboutPage() {
             <p style={{ textAlign: "left" }}>
               Leveraging their passion for basketball, student athletes gain the
               necessary tools & resources, support & defined, actionable plans
-              to make it happen. The Make it WHOop way allows members to Define,
+              to make it happen. The Hoopers Loop way allows members to Define,
               Showcase & Achieve their goals
             </p>
             <p style={{ textAlign: "left" }}>
               Be it through an innovative, time bound & cost effective player
               recruitment hub, through customized player development plans,
-              showcase events, and everything in between, at Make it WHOop, we
+              showcase events, and everything in between, at Hoopers Loop, we
               meet every player where they are, understand their individual
               needs & develop a plan to elevate & transition every student
               athlete to where they dream of being.. in their own unique way.
             </p>
             <p style={{ textAlign: "left" }}>
-              With a centralized focus to the student athlete, Make it WHOop
+              With a centralized focus to the student athlete, Hoopers Loop
               makes the process seamless, effortless, & customer centric at
               every step. Beit a parent looking for a streamlined process to
               support their child to achieve their academic & athletic goals,
@@ -120,12 +120,12 @@ function AboutPage() {
           </p>
           <p>
             Recognizing what she personally gained from the game she truly
-            loves, Wumi’s objective in the creation of Make it WHOop, centers
+            loves, Wumi’s objective in the creation of Hoopers Loop, centers
             around a desire to equip, enable & empower young athletes as they
-            pursue their dreams. In Wumi’s definition, Make it WHOop provides
+            pursue their dreams. In Wumi’s definition, Hoopers Loop provides
             “access, information & support” - core ingredients to support the
             young athlete, parents in their navigation of the basketball
-            recruitment process. Further, Make it WHOop ensures a dual
+            recruitment process. Further, Hoopers Loop ensures a dual
             accountability model to success. There is a part for everyone to
             play in getting to the collective end goal. In Wumi’s vision, with
             collaboration, ownership & the right tools, it’s achievable.
