@@ -49,7 +49,7 @@ export default function PostItem(props) {
 
   // console.log(postDetails);
 
-  // const day = postDetails.date.toDate().toString();
+  const day = postDetails.date.toDate().toString();
 
   // const deleteCurrentPost = () => {
   //   firebase.deletePost(props.id);
@@ -63,7 +63,7 @@ export default function PostItem(props) {
           <h3 className={classes.title}>{postDetails && postDetails.title}</h3>
         </Grid>
         <Grid item sm={6}>
-          <p className={classes.date}>date</p>
+          <p className={classes.date}>{day}</p>
         </Grid>
         <Grid item xs={12} sm={3}>
           {postDetails.media === "video" && (
