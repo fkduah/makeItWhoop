@@ -78,13 +78,11 @@ class Firebase {
 
   //  Delete Post
 
-  deletePost = (id, deleteFields) => {
+  deletePost = (id, thePost) => {
     firestore()
       .collection("Players-Post")
       .doc(`${id}`)
-      .update({
-        post: firebase.firestore.FieldValue.arrayRemove(deleteFields),
-      });
+      .update({ post: firebase.firestore.FieldValue.arrayRemove(thePost) });
   };
 
   // Get The Post

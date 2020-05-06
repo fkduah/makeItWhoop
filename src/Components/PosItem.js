@@ -42,25 +42,33 @@ const useStyles = makeStyles((theme) => ({
 export default function PostItem(props) {
   const firebase = useFirebase();
 
-  const day = props.post.date.toDate().toString();
+  const { post } = props;
 
-  const deleteCurrentPost = () =>
-    firebase.deletePost(props.id, props.post.field.title);
+  const postID = post.reference.id;
+  const postDetails = post[postID][0];
+
+  // console.log(postDetails);
+
+  // const day = postDetails.date.toDate().toString();
+
+  // const deleteCurrentPost = () => {
+  //   firebase.deletePost(props.id);
+  // };
 
   const classes = useStyles();
   return (
     <Paper className={classes.root} elevation={20}>
       <Grid container spacing={3}>
         <Grid item sm={6} xs={12}>
-          <h3 className={classes.title}>{props.post.field.title}</h3>
+          <h3 className={classes.title}>{postDetails && postDetails.title}</h3>
         </Grid>
         <Grid item sm={6}>
-          <p className={classes.date}>{day}</p>
+          <p className={classes.date}>date</p>
         </Grid>
         <Grid item xs={12} sm={3}>
-          {props.post.field.media === "video" && (
+          {postDetails.media === "video" && (
             <Iframe
-              url={props.post.field.videoURL}
+              url={postDetails.media.videoURL}
               width="100%"
               // height={150}
               id="myId"
@@ -71,15 +79,15 @@ export default function PostItem(props) {
               style={{ marginBottom: 20, boxShadow: "3px 3px 15px #650f2d" }}
             />
           )}
-          {props.post.field.media === "image" && (
+          {postDetails.media === "image" && (
             <img
-              src={props.post.field.imageURL}
+              src={postDetails.imageURL}
               alt="Post"
               width="100%"
               style={{ marginBottom: 20, boxShadow: "3px 3px 15px #650f2d" }}
             />
           )}
-          {!props.post.field.media && (
+          {!postDetails.media && (
             <Avatar
               elevation={20}
               variant="square"
@@ -92,8 +100,8 @@ export default function PostItem(props) {
           <h4 style={{ textAlign: "left", marginTop: "0px" }}>
             <FormatQuoteIcon
               style={{ transform: `scaleX(-1)`, color: "#f50057" }}
-            />{" "}
-            {props.post.field.content}{" "}
+            />
+            {postDetails.content && postDetails.content}
             <FormatQuoteIcon style={{ color: "#f50057" }} />
           </h4>
           {/* <Button

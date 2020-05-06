@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from "react";
+
+import { v4 as uuidv4 } from "uuid";
+
 import PostItem from "../Components/PosItem";
 import {
   Container,
@@ -13,10 +16,14 @@ import {
   Select,
   InputLabel,
   TextField,
+  ExpansionPanel,
+  ExpansionPanelDetails,
+  ExpansionPanelSummary,
 } from "@material-ui/core";
 import AccountBoxIcon from "@material-ui/icons/AccountBox";
 import PostAddIcon from "@material-ui/icons/PostAdd";
 import CancelPresentationIcon from "@material-ui/icons/CancelPresentation";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Alert from "@material-ui/lab/Alert";
 
 import Iframe from "react-iframe";
@@ -68,6 +75,7 @@ export default function PlayerPage(props) {
   const [posts, setPosts] = useState();
   const [erpost, seterPost] = useState(false);
   const [ertitle, seterTitle] = useState(false);
+
   const [field, setField] = useState({
     media: "",
     title: "",
@@ -87,6 +95,7 @@ export default function PlayerPage(props) {
 
   const handleSubmitPost = (e) => {
     e.preventDefault();
+
     if (field.content.length < 1) {
       seterPost(true);
     }
@@ -95,18 +104,24 @@ export default function PlayerPage(props) {
       seterTitle(true);
       return;
     }
+    const id = { id: uuidv4() };
     firebase.thePost(props.match.params.id, {
-      date: new Date(),
-      field,
+      [id.id]: [{ date: new Date(), ...field }],
+      reference: id,
     });
     setField(field);
-    setPost(false);
+    setPost();
     seterPost(false);
     seterTitle(false);
   };
 
+  const getAllPost = firebase.getPost;
+
   useEffect(() => {
     firebase.getPost(props.match.params.id, setPosts);
+  }, []);
+
+  useEffect(() => {
     firebase.thePlayer(props.match.params.id, setPlayer);
   }, [firebase, props.match.params.id]);
 
@@ -133,6 +148,32 @@ export default function PlayerPage(props) {
                       src={player["profilePicURL"]}
                     ></Avatar>
                   </Paper>
+
+                  {player.eval && (
+                    <ExpansionPanel>
+                      <ExpansionPanelSummary
+                        style={{ backgroundColor: `rgb(249, 227, 239)` }}
+                        expandIcon={
+                          <ExpandMoreIcon style={{ color: `#f50057` }} />
+                        }
+                        aria-controls="panel1a-content"
+                        id="panel1a-header"
+                      >
+                        <Typography
+                          style={{
+                            color: `#f50057`,
+                            fontWeight: 400,
+                            margin: 0,
+                          }}
+                        >
+                          Player Evaluation
+                        </Typography>
+                      </ExpansionPanelSummary>
+                      <ExpansionPanelDetails>
+                        <Typography align="left">{player[`eval`]}</Typography>
+                      </ExpansionPanelDetails>
+                    </ExpansionPanel>
+                  )}
                 </Grid>
                 <Grid item xs={12} md={8}>
                   <Paper
@@ -455,16 +496,11 @@ export default function PlayerPage(props) {
                   </div>
                   {profile && <div>Show Form</div>}
                 </Grid>
+
                 {posts &&
-                  posts.post
-                    .reverse()
-                    .map((post) => (
-                      <PostItem
-                        post={post}
-                        key={post.date}
-                        id={props.match.params.id}
-                      />
-                    ))}
+                  posts.post.reverse().map((post) => {
+                    return <PostItem post={post} key={uuidv4()} />;
+                  })}
               </Grid>
             )}
           </div>

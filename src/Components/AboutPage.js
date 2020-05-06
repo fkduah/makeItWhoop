@@ -53,7 +53,7 @@ function AboutPage() {
 
             <p style={{ textAlign: "left" }}>
               Hoopers Loop is a one stop shop, aimed at equipping & enabling
-              every WHOoper as they make efforts to realize their athletic
+              every Hooper as they make efforts to realize their athletic
               potential, achieve their post -secondary academic goals & define
               WHO they truly are along the way.
             </p>
@@ -77,7 +77,7 @@ function AboutPage() {
               every step. Beit a parent looking for a streamlined process to
               support their child to achieve their academic & athletic goals,
               the Scout looking to build their dream team, a coach looking to
-              showcase their top talent & or an aspiring WHOoper looking for an
+              showcase their top talent & or an aspiring Hooper looking for an
               open door to shine, we’ve got the solutions in a centralized way.
               We provide collaborative tools, enabling pathways for meaningful,
               results oriented connections with a click of a button. Make it
