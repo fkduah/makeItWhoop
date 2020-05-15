@@ -2,29 +2,30 @@ import React from "react";
 
 import { Container, makeStyles, Typography } from "@material-ui/core";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   topImage: {
     width: "100%",
-    left: 0
+    left: 0,
   },
   headingText: {
     fontSize: "3.5rem",
     fontFamily: "Anton, sans-serif",
-    marginBottom: 0
+    marginBottom: 0,
   },
   contentWrap: {
-    marginBottom: "120px"
+    marginBottom: "120px",
+    height: "100vh",
   },
   leadSentence: {
     marginTop: 70,
     fontWeight: 500,
     marginBottom: 0,
     fontSize: "1.5rem",
-    lineHeight: "1.8rem"
-  }
+    lineHeight: "1.8rem",
+  },
 }));
 
 function ContactPage() {

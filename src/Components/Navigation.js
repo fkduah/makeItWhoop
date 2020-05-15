@@ -13,6 +13,12 @@ import {
   Toolbar,
   AppBar,
   Hidden,
+  Paper,
+  MenuList,
+  MenuItem,
+  Popper,
+  Grow,
+  ClickAwayListener,
 } from "@material-ui/core/";
 
 import "../../src/App.css";
@@ -20,6 +26,10 @@ import "../../src/App.css";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    position: "sticky",
+    top: 0,
+    display: "flex",
+    zIndex: 5,
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -30,7 +40,9 @@ const useStyles = makeStyles((theme) => ({
   menuItem: {
     margin: `auto 10px`,
   },
-  menuItems: {},
+  menuList: {
+    backgroundColor: "#212121",
+  },
 }));
 
 const primary = grey[900];
@@ -42,6 +54,20 @@ function Navigation() {
   const logout = firebase.signOutUser;
 
   const [online, setOnline] = useState(false);
+  const [open, setOpen] = React.useState(false);
+  const anchorRef = React.useRef(null);
+
+  const handleToggle = () => {
+    setOpen((prevOpen) => !prevOpen);
+  };
+
+  const handleClose = (event) => {
+    if (anchorRef.current && anchorRef.current.contains(event.target)) {
+      return;
+    }
+
+    setOpen(false);
+  };
 
   useEffect(() => {
     // Update the document title using the browser API
@@ -49,6 +75,22 @@ function Navigation() {
   }, [isOnline]);
 
   const classes = useStyles();
+
+  function handleListKeyDown(event) {
+    if (event.key === "Tab") {
+      event.preventDefault();
+      setOpen(false);
+    }
+  }
+  // return focus to the button when we transitioned from !open -> open
+  const prevOpen = React.useRef(open);
+  React.useEffect(() => {
+    if (prevOpen.current === true && open === false) {
+      anchorRef.current.focus();
+    }
+
+    prevOpen.current = open;
+  }, [open]);
 
   return (
     <div className={classes.root}>
@@ -64,9 +106,65 @@ function Navigation() {
 
           <div style={{ margin: `auto 5%`, display: `flex` }}>
             <Hidden smDown>
-              <Typography variant="h6" className={classes.menuItem}>
-                <Link to="/about">About</Link>
-              </Typography>
+              <div>
+                <Button
+                  ref={anchorRef}
+                  aria-controls={open ? "menu-list-grow" : undefined}
+                  aria-haspopup="true"
+                  onClick={handleToggle}
+                >
+                  <Typography
+                    variant="h6"
+                    className={classes.menuItem}
+                    style={{ textTransform: "capitalize", color: "white" }}
+                  >
+                    About
+                  </Typography>
+                </Button>
+                <Popper
+                  open={open}
+                  anchorEl={anchorRef.current}
+                  role={undefined}
+                  transition
+                  disablePortal
+                >
+                  {({ TransitionProps, placement }) => (
+                    <Grow
+                      {...TransitionProps}
+                      style={{
+                        transformOrigin:
+                          placement === "bottom"
+                            ? "center top"
+                            : "center bottom",
+                      }}
+                    >
+                      <Paper>
+                        <ClickAwayListener onClickAway={handleClose}>
+                          <MenuList
+                            autoFocusItem={open}
+                            id="menu-list-grow"
+                            onKeyDown={handleListKeyDown}
+                            className={classes.menuList}
+                          >
+                            <MenuItem onClick={handleClose}>
+                              <Link to="/about">About Hooper Loop</Link>
+                            </MenuItem>
+                            <MenuItem onClick={handleClose}>
+                              {" "}
+                              <Link to="/hoopers">About Hoopers</Link>
+                            </MenuItem>
+                            <MenuItem onClick={handleClose}>
+                              {" "}
+                              <Link to="/scouts">About Scouts</Link>
+                            </MenuItem>
+                          </MenuList>
+                        </ClickAwayListener>
+                      </Paper>
+                    </Grow>
+                  )}
+                </Popper>
+              </div>
+
               <Typography variant="h6" className={classes.menuItem}>
                 <Link to="/players">Players</Link>
               </Typography>

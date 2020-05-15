@@ -10,8 +10,9 @@ import RegistrationFormWrap from "./Components/RegistrationFormWrap";
 import LoginPage from "./Components/LoginPage";
 import PlayersPage from "./Components/PlayersPage";
 import PlayerPage from "./Components/PlayerPage";
-
 import ContactPage from "./Components/ContactPage";
+import HoopersPage from "./Components/HoopersPage";
+import ScoutsPage from "./Components/ScoutsPage";
 
 import { Route, Switch } from "react-router-dom";
 
@@ -32,6 +33,8 @@ function App() {
         />
         <Route exact path="/contact" component={ContactPage} />
         <Route exact path="/login" component={LoginPage} />
+        <Route exact path="/hoopers" component={HoopersPage} />
+        <Route exact path="/scouts" component={ScoutsPage} />
         <Route exact path="/players" component={PlayersPage} />
         <Route exact path="/players/:id" component={PlayerPage} />
         <Route path="/" component={HomePage} />

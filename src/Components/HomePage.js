@@ -54,8 +54,8 @@ function HomePage() {
                 through sport.
               </h4>
               <h4 className="headerDesc">
-                Connecting <span className="highlighted">Players</span> and{" "}
-                <span className="highlighted">Recruitors</span>.{" "}
+                Connecting <span className="highlighted">Hoopers</span> and{" "}
+                <span className="highlighted">Nationwide Scouts</span>.{" "}
               </h4>
               <Link to="/login">
                 <Button variant="contained" color="secondary" size="large">
@@ -93,21 +93,21 @@ function HomePage() {
             More Than A <span className="standOutText">Game</span>
           </Typography>
           <p>
-            As an athlete growing …” change to “Hoopers Loop provides holistic
-            guidance and mentorship from Canadian women who have lived their
-            Whoop dreams, and want to equip you with the tools you need on and
-            off the court.
+            Hoopers Loop provides the guidance and tools needed for Canadian
+            girls’ basketball players to achieve their post-secondary goals.
+            With an emphasis on fluid-constant communication, we look to keep
+            nationwide scouts, coaches, and Hoopers in the Loop.
           </p>
           <p>
-            “Having the opportunity..” change to “The 4 Pillars: Versed in the
-            Adverse, Preparation for Performance, Whoop Dreams, and I Got Next
-            are designed for every female athlete wanting more out of
-            basketball.
+            Through our 3 step approach, we will help the PSA Define themselves
+            through &amp; beyond the game of basketball, Showcase their talent,
+            and work towards Achieving their goals. Hoopers Loop services cater
+            to all members of the development and recruitment cycle.
           </p>
 
           <Link to="/login">
             <Button variant="contained" color="secondary" size="large">
-              Login Now
+              Learn More
             </Button>
           </Link>
         </Container>
@@ -124,20 +124,20 @@ function HomePage() {
               className="pageTitleIntro homePage"
             >
               <Box className="animated fadeInUp">
-                <Link to="/login">
+                <Link to="/hoopers">
                   <Card
                     image={player}
-                    title="Players"
+                    title="Hoopers"
                     content="Would you like to play basketball after high school? We created this platform for you! Share your basketball information, statistics, highlights, academics and more with university and college coaches across North America today!"
                     imageTitle="Basketball Players"
                   />
                 </Link>
               </Box>
               <Box className="animated fadeInUp">
-                <Link to="/login">
+                <Link to="/scouts">
                   <Card
                     image={recruiter}
-                    title="Recruiters"
+                    title="Scouts"
                     content="Canadian girls basketball is the best it’s ever been, and this is how you can keep up with your busy schedule! View player profiles and recruitment information, and scroll through their timeline for recent news and accomplishments here!"
                     imageTitle="Recruiter Images"
                   />
