@@ -155,7 +155,11 @@ function Navigation() {
                             </MenuItem>
                             <MenuItem onClick={handleClose}>
                               {" "}
-                              <Link to="/scouts">Hooper Scouts</Link>
+                              <Link to="/scouts">About Scouts</Link>
+                            </MenuItem>
+                            <MenuItem onClick={handleClose}>
+                              {" "}
+                              <Link to="/verification">About Verification</Link>
                             </MenuItem>
                           </MenuList>
                         </ClickAwayListener>
