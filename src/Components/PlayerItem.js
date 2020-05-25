@@ -50,20 +50,23 @@ export default function PlayerItem({ player }) {
       <Card xs={6} elevation={15} className={classes.root}>
         <div className={classes.details}>
           <CardContent className={classes.content}>
-            <Typography component="h5" variant="h5" className={classes.name}>
+            <Typography component="h6" variant="h6" className={classes.name}>
               {player["firstName"]}{" "}
               <span style={{ color: "#f50057", fontFamily: "Anton" }}>
                 {player["lastName"]}
               </span>
             </Typography>
-            <Typography variant="subtitle1" color="textPrimary">
+            <Typography variant="body2" color="textPrimary">
               Position: <strong> {player["position"]}</strong>
             </Typography>
-            <Typography variant="subtitle1" color="textPrimary">
+            <Typography variant="body2" color="textPrimary">
               Height: <strong> {player["height"]}</strong>
             </Typography>
-            <Typography variant="subtitle1" color="textPrimary">
+            <Typography variant="body2" color="textPrimary">
               School: <strong>{player["winterTeam"]}</strong>
+            </Typography>
+            <Typography variant="body2" color="textPrimary">
+              Graduating Year: <strong>{player["gradYear"]}</strong>
             </Typography>
             <IconButton aria-label="add to favorites">
               <FavoriteIcon />
