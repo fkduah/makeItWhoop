@@ -8,18 +8,18 @@ import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   thirdwrapper: {
-    marginBottom: 100
+    marginBottom: 100,
   },
   topImage: {
     width: "100%",
-    left: 0
+    left: 0,
   },
   contentWrap: {
-    marginBottom: 0
-  }
+    marginBottom: 0,
+  },
 }));
 
 function RegistrationPage() {
@@ -39,15 +39,36 @@ function RegistrationPage() {
             </Typography>
 
             <p style={{ textAlign: "left" }}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-              lorem quam, adipiscing condimentum tristique vel, eleifend sed
-              turpis. Pellentesque cursus arcu id magna euismod in elementum
-              purus molestie sed. Curabitur pellentesque massa eu nulla et
-              consequat porttitor arcu porttitor. Lorem ipsum dolor sit amet,
-              consectetur adipiscing elit. Integer lorem quam, adipiscing
-              condimentum tristique vel, eleifend sed turpis. Morbi ut arcu
-              dolor. Maecenas id nulla nec nibh viverra magna eu lacinia
-              ullamcorper, augue est.
+              Keep in the Loop with our 24/7 accessible, cost effective, and
+              time bound recruitment portal!
+            </p>
+            <p
+              style={{
+                textAlign: "left",
+                fontWeight: "bold",
+              }}
+            >
+              Hoopers
+            </p>
+            <p style={{ textAlign: "left" }}>
+              Would you like toPlay basketball after high school? We created
+              this platform for you! Share your basketball information,
+              statistics, highlights, academics and more with university and
+              college coaches across North America today!
+            </p>
+            <p
+              style={{
+                textAlign: "left",
+                fontWeight: "bold",
+              }}
+            >
+              Scouts
+            </p>
+            <p style={{ textAlign: "left" }}>
+              Candaian girls basketball is the best it’s ever been, and this is
+              how you can keep up with your busy schedules! View player profiles
+              and recruitment information, and scroll through their timeline for
+              recent news and accomplishments here!
             </p>
           </div>
         </Container>
