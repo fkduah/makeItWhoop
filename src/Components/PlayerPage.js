@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 
+import Iframe from "react-iframe";
+
 import { v4 as uuidv4 } from "uuid";
 
 import PostItem from "../Components/PosItem";
@@ -25,8 +27,6 @@ import PostAddIcon from "@material-ui/icons/PostAdd";
 import CancelPresentationIcon from "@material-ui/icons/CancelPresentation";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Alert from "@material-ui/lab/Alert";
-
-import Iframe from "react-iframe";
 
 import { useFirebase } from "../Components/Firebase/FirebaseContext";
 
@@ -274,27 +274,17 @@ export default function PlayerPage(props) {
                         )}
                       </Grid>
                       <Grid item xs={12} md={9}>
-                        <Typography
-                          variant="body2"
-                          component="p"
-                          className={classes.profileTitle}
-                        >
-                          Favorite Move:
-                        </Typography>
-                        <Typography variant="body1" component="p">
-                          {player[`favorite`]}
-                        </Typography>
-                        <Typography
-                          variant="body2"
-                          component="p"
-                          className={classes.profileTitle}
-                        >
-                          What Your Looking To Develop:
-                        </Typography>
-                        <Typography variant="body1" component="p">
-                          {player[`develop`]}
-                        </Typography>
-
+                        {player.youtubeLink && (
+                          <Iframe
+                            url={player.youtubeLink}
+                            width="426px"
+                            height="250px"
+                            id="myId"
+                            className="myClassname"
+                            display="initial"
+                            position="relative"
+                          />
+                        )}
                         <Typography
                           variant="body2"
                           component="p"
@@ -424,7 +414,7 @@ export default function PlayerPage(props) {
                               <strong>Style of play</strong>: {player[`style`]}
                             </span>
                           )}
-                          <br />
+
                           {player.favorite && (
                             <span>
                               <strong>Favourite aspect of my game</strong>:{" "}
@@ -446,7 +436,7 @@ export default function PlayerPage(props) {
                               <strong>
                                 Institutions that have shown interest
                               </strong>
-                              : {player[`interest`].split(",").join(",")}
+                              :<br /> {player[`interest`].split(",").join(",")}
                             </span>
                           )}
                           <br />
