@@ -125,6 +125,7 @@ export default function PlayerPage(props) {
     firebase.thePlayer(props.match.params.id, setPlayer);
   }, [firebase, props.match.params.id]);
 
+  console.log(player);
   return (
     <>
       <Container maxWidth={false} className="sectionTwoFluidWrapper">
@@ -213,11 +214,37 @@ export default function PlayerPage(props) {
                           component="p"
                           className={classes.profileTitle}
                         >
-                          Date of Birth:
+                          DOB:
                         </Typography>
                         <Typography variant="body2" component="p">
                           {player[`DOB`]}
                         </Typography>
+                        <Typography
+                          variant="body2"
+                          component="p"
+                          className={classes.profileTitle}
+                        >
+                          Class of:
+                        </Typography>
+                        <Typography variant="body2" component="p">
+                          {player[`gradYear`]}
+                        </Typography>
+
+                        {player.rating && (
+                          <div>
+                            {" "}
+                            <Typography
+                              variant="body2"
+                              component="p"
+                              className={classes.profileTitle}
+                            >
+                              rating:
+                            </Typography>
+                            <Typography variant="body2" component="p">
+                              {player[`rating`]}
+                            </Typography>
+                          </div>
+                        )}
 
                         <Typography
                           variant="body2"
@@ -230,16 +257,21 @@ export default function PlayerPage(props) {
                           {player[`winterTeam`]}
                         </Typography>
 
-                        <Typography
-                          variant="body2"
-                          component="p"
-                          className={classes.profileTitle}
-                        >
-                          Graduation Year:
-                        </Typography>
-                        <Typography variant="body2" component="p">
-                          {player[`gradYear`]}
-                        </Typography>
+                        {player.status && (
+                          <div>
+                            {" "}
+                            <Typography
+                              variant="body2"
+                              component="p"
+                              className={classes.profileTitle}
+                            >
+                              rating:
+                            </Typography>
+                            <Typography variant="body2" component="p">
+                              {player[`status`]}
+                            </Typography>
+                          </div>
+                        )}
                       </Grid>
                       <Grid item xs={12} md={9}>
                         <Typography
@@ -262,6 +294,35 @@ export default function PlayerPage(props) {
                         <Typography variant="body1" component="p">
                           {player[`develop`]}
                         </Typography>
+
+                        <Typography
+                          variant="body2"
+                          component="p"
+                          className={classes.profileTitle}
+                        >
+                          Contact:
+                        </Typography>
+                        <Typography variant="body2" component="p">
+                          {player.contactPhone && (
+                            <span>
+                              <strong>Phone Number:</strong>{" "}
+                              {player[`contactPhone`]}
+                            </span>
+                          )}
+                          <br />
+                          {player.contactEmail && (
+                            <span>
+                              <strong>Email</strong>: {player[`contactEmail`]}
+                            </span>
+                          )}
+                          <br />
+                          {player.gmailing && (
+                            <span>
+                              <strong> Mailing Address</strong>:{" "}
+                              {player[`gmailing`]}
+                            </span>
+                          )}
+                        </Typography>
                         <Typography
                           variant="body2"
                           component="p"
@@ -270,9 +331,19 @@ export default function PlayerPage(props) {
                           Social Media:
                         </Typography>
                         <Typography variant="body2" component="p">
-                          {(player.tiktok === "na" || "") && (
+                          {player.instagram && (
                             <span>
-                              <strong>Tik Tok</strong>: {player[`tiktok`]}
+                              <strong>Instagram</strong>:{" "}
+                              <a
+                                href={`https://www.instagram.com/${player[
+                                  `instagram`
+                                ].replace("@", "")}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                style={{ color: "#212121" }}
+                              >
+                                {player[`instagram`]}
+                              </a>
                               <br />
                             </span>
                           )}
@@ -292,19 +363,9 @@ export default function PlayerPage(props) {
                               <br />
                             </span>
                           )}
-                          {player.instagram && (
+                          {(player.tiktok === "na" || "") && (
                             <span>
-                              <strong>Instagram</strong>:{" "}
-                              <a
-                                href={`https://www.instagram.com/${player[
-                                  `instagram`
-                                ].replace("@", "")}`}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                style={{ color: "#212121" }}
-                              >
-                                {player[`instagram`]}
-                              </a>
+                              <strong>Tik Tok</strong>: {player[`tiktok`]}
                               <br />
                             </span>
                           )}
@@ -314,16 +375,115 @@ export default function PlayerPage(props) {
                           component="p"
                           className={classes.profileTitle}
                         >
-                          Contact:
+                          Guardian:
+                        </Typography>
+                        <Typography variant="body2" component="p">
+                          {player.relationship && (
+                            <span>
+                              <strong>Relationship</strong>:{" "}
+                              {player[`relationship`]}
+                            </span>
+                          )}
                           <br />
-                          <a
-                            href={`mailto:www.makeitwhoop@gmail.com`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            style={{ color: "#212121" }}
-                          >
-                            {player.firstName} {player.lastName}
-                          </a>
+                          {player.guardianfname && (
+                            <span>
+                              <strong>First Name</strong>:{" "}
+                              {player[`guardianfname`]}
+                            </span>
+                          )}
+                          <br />
+                          {player.guardianlname && (
+                            <span>
+                              <strong>Last Name</strong>:{" "}
+                              {player[`guardianlname`]}
+                            </span>
+                          )}
+                          <br />
+                          {player.gphone && (
+                            <span>
+                              <strong>Phone</strong>: {player[`gphone`]}
+                            </span>
+                          )}
+                          <br />
+                          {player.gemail && (
+                            <span>
+                              <strong>Email</strong>: {player[`gemail`]}
+                            </span>
+                          )}
+                        </Typography>
+                        <Typography
+                          variant="body2"
+                          component="p"
+                          className={classes.profileTitle}
+                        >
+                          My Game:
+                        </Typography>
+                        <Typography variant="body2" component="p">
+                          {player.style && (
+                            <span>
+                              <strong>Style of play</strong>: {player[`style`]}
+                            </span>
+                          )}
+                          <br />
+                          {player.favorite && (
+                            <span>
+                              <strong>Favourite aspect of my game</strong>:{" "}
+                              {player[`favorite`]}
+                            </span>
+                          )}
+                          <br />
+                          <br />
+                          {player.develop && (
+                            <span>
+                              <strong>Looking to develop</strong>:{" "}
+                              {player[`develop`]}
+                            </span>
+                          )}
+                          <br />
+                          <br />
+                          {player.interest && (
+                            <span>
+                              <strong>
+                                Institutions that have shown interest
+                              </strong>
+                              : {player[`interest`].split(",").join(",")}
+                            </span>
+                          )}
+                          <br />
+                          <br />
+                        </Typography>
+                        <Typography
+                          variant="body2"
+                          component="p"
+                          className={classes.profileTitle}
+                        >
+                          Academics:
+                        </Typography>
+                        <Typography variant="body2" component="p">
+                          {player.sat && (
+                            <span>
+                              <strong>SAT Score</strong>: {player[`sat`]}
+                            </span>
+                          )}
+                          <br />
+                          {player.sat && (
+                            <span>
+                              <strong>SAT Score</strong>: {player[`sat`]}
+                            </span>
+                          )}
+                          <br />
+                          {player.act && (
+                            <span>
+                              <strong>ACT Score</strong>: {player[`act`]}
+                            </span>
+                          )}
+                          <br />
+                          {player.gpa && (
+                            <span>
+                              <strong>GPA Score</strong>: {player[`gpa`]}
+                            </span>
+                          )}
+                          <br />
                         </Typography>
                       </Grid>
                     </Grid>

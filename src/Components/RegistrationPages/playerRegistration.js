@@ -92,6 +92,9 @@ export default function PlayerForm(props) {
     winterTeamCoachName: wcoach,
     winterCoachEmail: wcoachemail,
     winterTeamJersey: wjersy,
+    sat,
+    act,
+    gpa,
     summerTeam: summer,
     summerTeamsLeauge: sleague,
     summerTeamInstagram: sinstagram,
@@ -103,6 +106,7 @@ export default function PlayerForm(props) {
     profilePicURL: image,
     youtubeLink: youtube,
     favorite,
+    style,
     develop,
     commitment,
     interest,
@@ -598,21 +602,19 @@ export default function PlayerForm(props) {
             }}
             onChange={(e) => setInterest(e.target.value)}
           />
-          <TextField
-            id="commitment"
-            label="Commitment"
-            style={{ margin: 8 }}
-            placeholder=""
-            value={commitment}
-            variant="filled"
-            error={commitment ? true : false}
-            margin="normal"
-            name={commitment}
-            InputLabelProps={{
-              shrink: true,
-            }}
-            onChange={(e) => setCommitment(e.target.value)}
-          />
+          <FormControl variant="filled">
+            <InputLabel id="commitment">Status</InputLabel>
+            <Select
+              style={{ margin: 8, paddingRight: "40px" }}
+              labelId="commitment"
+              id="commitment"
+              value={commitment}
+              onChange={(e) => setCommitment(e.target.value)}
+            >
+              <MenuItem value={"undecided"}>undecided</MenuItem>
+              <MenuItem value={"committed"}>committed</MenuItem>
+            </Select>
+          </FormControl>
           <br />
 
           <h3 style={{ textAlign: "LEFT" }}>WINTER TEAM</h3>
