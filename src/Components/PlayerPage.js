@@ -276,9 +276,13 @@ export default function PlayerPage(props) {
                       <Grid item xs={12} md={9}>
                         {player.youtubeLink && (
                           <Iframe
-                            url={player.youtubeLink}
+                            url={player.youtubeLink.replace(
+                              "https://www.youtube.com/watch?v=",
+                              "https://www.youtube.com/embed/"
+                            )}
                             width="426px"
                             height="250px"
+                            allow="fullscreen"
                             id="myId"
                             className="myClassname"
                             display="initial"

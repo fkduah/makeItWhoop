@@ -903,7 +903,7 @@ export default function PlayerForm(props) {
             id="youtube"
             type="url"
             variant="filled"
-            label="Youtube Video ID"
+            label="Youtube Video URL"
             style={{ margin: 8 }}
             placeholder=""
             error={youtube ? true : false}
@@ -919,7 +919,10 @@ export default function PlayerForm(props) {
           {youtube && (
             <div>
               <Iframe
-                url={`http://www.youtube.com/embed/${youtube}`}
+                url={youtube.replace(
+                  "https://www.youtube.com/watch?v=",
+                  "https://www.youtube.com/embed/"
+                )}
                 width="426px"
                 height="250px"
                 id="myId"
