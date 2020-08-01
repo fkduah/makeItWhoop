@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 
 import Iframe from "react-iframe";
 
-import { v4 as uuidv4 } from "uuid";
+// import { v4 as uuidv4 } from "uuid";
 
-import PostItem from "../Components/PosItem";
+// import PostItem from "../Components/PosItem";
 import {
   Container,
   makeStyles,
@@ -12,21 +12,13 @@ import {
   Grid,
   Paper,
   Avatar,
-  Button,
-  FormControl,
-  MenuItem,
-  Select,
-  InputLabel,
-  TextField,
   ExpansionPanel,
   ExpansionPanelDetails,
   ExpansionPanelSummary,
 } from "@material-ui/core";
-import AccountBoxIcon from "@material-ui/icons/AccountBox";
-import PostAddIcon from "@material-ui/icons/PostAdd";
-import CancelPresentationIcon from "@material-ui/icons/CancelPresentation";
+
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import Alert from "@material-ui/lab/Alert";
+// import Alert from "@material-ui/lab/Alert";
 
 import { useFirebase } from "../Components/Firebase/FirebaseContext";
 
@@ -71,20 +63,20 @@ export default function PlayerPage(props) {
   const user = firebase.userLoginWatch;
 
   const [player, setPlayer] = useState();
-  const [profile, setProfile] = useState(false);
+  // const [profile, setProfile] = useState(false);
   // const [post, setPost] = useState(false);
-  const [posts, setPosts] = useState();
+  // const [posts, setPosts] = useState();
   // const [erpost, seterPost] = useState(false);
   // const [ertitle, seterTitle] = useState(false);
   const [status, setStatus] = useState("");
 
-  const [field, setField] = useState({
-    media: "",
-    title: "",
-    content: "",
-    imageURL: "",
-    videoURL: "",
-  });
+  // const [field, setField] = useState({
+  //   media: "",
+  //   title: "",
+  //   content: "",
+  //   imageURL: "",
+  //   videoURL: "",
+  // });
 
   // function handlePost(evt) {
   //   evt.preventDefault();
@@ -117,11 +109,11 @@ export default function PlayerPage(props) {
   //   seterTitle(false);
   // };
 
-  const getAllPost = firebase.getPost;
+  // const getAllPost = firebase.getPost;
 
-  useEffect(() => {
-    firebase.getPost(props.match.params.id, setPosts);
-  }, []);
+  // useEffect(() => {
+  //   firebase.getPost(props.match.params.id, setPosts);
+  // }, []);
 
   useEffect(() => {
     firebase.thePlayer(props.match.params.id, setPlayer);
@@ -496,7 +488,7 @@ export default function PlayerPage(props) {
                         </Grid>
                       </Grid>
                     </Paper>
-                    //{" "}
+
                     {
                       //                   <div style={{ textAlign: "left" }}>
                       //                     {!post && (
@@ -669,13 +661,10 @@ export default function PlayerPage(props) {
                       //   )}
                       // </div>
                     }
-                    {profile && <div>Show Form</div>}
+                    {
+                      // profile && <div>Show Form</div>
+                    }
                   </Grid>
-
-                  {posts &&
-                    posts.post.reverse().map((post) => {
-                      return <PostItem post={post} key={uuidv4()} />;
-                    })}
                 </Grid>
               )}
             </div>

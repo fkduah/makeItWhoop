@@ -48,7 +48,7 @@ function LoginPage() {
 
   useEffect(() => {
     current(setStatus);
-  }, [status, user]);
+  }, [status, current]);
 
   const classes = useStyles();
   return (

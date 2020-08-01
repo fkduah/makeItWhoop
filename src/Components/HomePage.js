@@ -5,7 +5,7 @@ import Card from "./CardSelect";
 
 import "./../App.css";
 import headerImage from "../../src/MakeItWhoop-Illustration.svg";
-import player from "../../src/highschool-grid-03.jpg";
+// import player from "../../src/highschool-grid-03.jpg";
 import recruiter from "../../src/coach-recruit.jpg";
 // import schoolCoach from "../../src/high-school-grid-01.jpg";
 import logo from "../../src/logo192.png";
