@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     left: 0,
     width: "100%",
     marginTop: 50,
-    position: "sticky",
+    position: "fixed",
   },
 
   copyright: {

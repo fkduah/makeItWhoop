@@ -23,12 +23,23 @@ const useStyles = makeStyles((theme) => ({
 
 function PlayersPage() {
   const [players, setPlayers] = useState();
+  const [status, setStatus] = useState("");
 
   const firebase = useFirebase();
+  const currentUser = firebase.currentUser;
+  const user = firebase.userLoginWatch;
+
+  console.log(currentUser());
 
   useEffect(() => {
-    firebase.list("PSA", setPlayers);
-  }, [firebase]);
+    user(setStatus);
+  }, [status, user]);
+
+  useEffect(() => {
+    if (status) {
+      firebase.list("PSA", setPlayers);
+    }
+  }, [firebase, status]);
 
   const classes = useStyles();
   return (
@@ -44,19 +55,24 @@ function PlayersPage() {
               Make It <span className="standOutText">Players</span>
             </Typography>
             <div className={classes.root}>
-              <Grid
-                container
-                direction="row"
-                justify="space-around"
-                alignItems="center"
-                // alignItems="center"
-              >
-                {!players && <h3>Getting The Ballers!</h3>}
-                {players &&
-                  players.map((player) => (
-                    <PlayerItem player={player} key={player.id} />
-                  ))}
-              </Grid>
+              {!status && (
+                <h3>Please Login Or Create An Account To See The Whoopers.</h3>
+              )}
+              {status && (
+                <Grid
+                  container
+                  direction="row"
+                  justify="space-around"
+                  alignItems="center"
+                  // alignItems="center"
+                >
+                  {!players && <h3>Getting The Ballers!</h3>}
+                  {players &&
+                    players.map((player) => (
+                      <PlayerItem player={player} key={player.id} />
+                    ))}
+                </Grid>
+              )}
             </div>
           </div>
         </Container>

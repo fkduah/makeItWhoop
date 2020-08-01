@@ -78,6 +78,7 @@ g#Ball {
   padding-bottom: 50px;
   color: #212121;
   text-align: center;
+  height: 100vh;
 }
 
 h3.MuiTypography-root.sectionTwoContent.MuiTypography-h3.MuiTypography-alignCenter {

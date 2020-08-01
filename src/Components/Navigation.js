@@ -149,18 +149,22 @@ function Navigation() {
                             <MenuItem onClick={handleClose}>
                               <Link to="/about">About Hooper Loop</Link>
                             </MenuItem>
-                            <MenuItem onClick={handleClose}>
-                              {" "}
-                              <Link to="/hoopers">About Hoopers</Link>
-                            </MenuItem>
+                            {
+                              // <MenuItem onClick={handleClose}>
+                              //   {" "}
+                              //   <Link to="/hoopers">About Hoopers</Link>
+                              // </MenuItem>
+                            }
                             <MenuItem onClick={handleClose}>
                               {" "}
                               <Link to="/scouts">About Scouts</Link>
                             </MenuItem>
-                            <MenuItem onClick={handleClose}>
-                              {" "}
-                              <Link to="/verification">About Verification</Link>
-                            </MenuItem>
+                            {
+                              // <MenuItem onClick={handleClose}>
+                              //   {" "}
+                              //   <Link to="/verification">About Verification</Link>
+                              // </MenuItem>
+                            }
                           </MenuList>
                         </ClickAwayListener>
                       </Paper>
@@ -175,6 +179,12 @@ function Navigation() {
               <Typography variant="h6" className={classes.menuItem}>
                 <Link to="/contact">Contact</Link>
               </Typography>
+
+              {!online && (
+                <Typography variant="h6" className={classes.menuItem}>
+                  <Link to="/registration/recruiter">Register</Link>
+                </Typography>
+              )}
             </Hidden>
           </div>
           {online && (

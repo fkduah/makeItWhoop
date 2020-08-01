@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 import {
   Container,
@@ -6,7 +7,7 @@ import {
   Typography,
   Grid,
   TextField,
-  Button
+  Button,
 } from "@material-ui/core";
 
 import { Alert } from "@material-ui/lab";
@@ -15,33 +16,39 @@ import { useFirebase } from "../Components/Firebase/FirebaseContext";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
   },
 
   headingText: {
     fontSize: "3.5rem",
     fontFamily: "Anton, sans-serif",
-    marginBottom: 0
+    marginBottom: 0,
   },
   contentWrap: {
-    marginBottom: "120px"
-  }
+    marginBottom: "120px",
+  },
 }));
 
 function LoginPage() {
   const firebase = useFirebase();
 
-  const login = firebase.userLoginWatch;
+  const login = firebase.signInUser;
+  const current = firebase.userLoginWatch;
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [user, setUser] = useState("");
+  const [status, setStatus] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
     login(email, password, setUser);
     // props.history.push("/profile");
   };
+
+  useEffect(() => {
+    current(setStatus);
+  }, [status, user]);
 
   const classes = useStyles();
   return (
@@ -56,76 +63,90 @@ function LoginPage() {
             >
               Make It <span className="standOutText">Login</span>
             </Typography>
+            {status && (
+              <div>
+                <h3>
+                  Thanks For Joining Us. You Now Have Exclusive Access To Top
+                  Rated Players
+                </h3>
+                <br />
+                <Link to="/players">
+                  <Button>View Players</Button>
+                </Link>
+              </div>
+            )}
 
-            <form style={{ marginTop: `50px` }} onSubmit={handleSubmit}>
-              <Typography
-                variant="h6"
-                align="center"
-                className={classes.leadSentence}
-              >
-                {user && (
-                  <span
-                    className="standOutText"
-                    style={{ textAlign: "center" }}
-                  >
-                    <Alert severity="error" style={{ textAlign: "center" }}>
-                      {user}
-                    </Alert>
-                  </span>
-                )}
-              </Typography>
-              <Grid
-                container
-                direction="column"
-                justify="center"
-                alignItems="center"
-              >
-                <TextField
-                  style={{ marginBotttom: "60px" }}
-                  id="email"
-                  type="email"
-                  label="Email Adress"
-                  placeholder=""
-                  required
-                  variant="filled"
-                  error={email ? true : false}
-                  value={email}
-                  helperText={email ? "" : "required"}
-                  margin="normal"
-                  name={email}
-                  InputLabelProps={{
-                    shrink: true
-                  }}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-                <TextField
-                  style={{ marginBotttom: "60px" }}
-                  id="password"
-                  type="password"
-                  label="Password"
-                  placeholder=""
-                  required
-                  variant="filled"
-                  error={password ? true : false}
-                  value={password}
-                  helperText={password ? "" : "required"}
-                  margin="normal"
-                  name={password}
-                  InputLabelProps={{
-                    shrink: true
-                  }}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-                <Button
-                  variant="contained"
-                  color="secondary"
-                  type="submit"
-                  value="Submit"
+            {!status && (
+              <form style={{ marginTop: `50px` }} onSubmit={handleSubmit}>
+                <Typography
+                  variant="h6"
+                  align="center"
+                  className={classes.leadSentence}
                 >
-                  Submit
-                </Button>
-              </Grid>
-            </form>
+                  {user && (
+                    <span
+                      className="standOutText"
+                      style={{ textAlign: "center" }}
+                    >
+                      <Alert severity="error" style={{ textAlign: "center" }}>
+                        {user}
+                      </Alert>
+                    </span>
+                  )}
+                </Typography>
+                <Grid
+                  container
+                  direction="column"
+                  justify="center"
+                  alignItems="center"
+                >
+                  <TextField
+                    style={{ marginBotttom: "60px" }}
+                    id="email"
+                    type="email"
+                    label="Email Adress"
+                    placeholder=""
+                    required
+                    variant="filled"
+                    error={email ? true : false}
+                    value={email}
+                    helperText={email ? "" : "required"}
+                    margin="normal"
+                    name={email}
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                  <TextField
+                    style={{ marginBotttom: "60px" }}
+                    id="password"
+                    type="password"
+                    label="Password"
+                    placeholder=""
+                    required
+                    variant="filled"
+                    error={password ? true : false}
+                    value={password}
+                    helperText={password ? "" : "required"}
+                    margin="normal"
+                    name={password}
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                  <Button
+                    variant="contained"
+                    color="secondary"
+                    type="submit"
+                    value="Submit"
+                  >
+                    Submit
+                  </Button>
+                </Grid>
+              </form>
+            )}
           </div>
         </Container>
       </Container>

@@ -24,7 +24,10 @@ class Firebase {
       .then((cred) => {
         firestore().collection(collection).doc(cred.user.uid).set(fields);
       })
-      .catch((e) => console.log(e));
+      .catch((e) => {
+        alert(e);
+        return;
+      });
   };
 
   // Sign Out Users
@@ -51,6 +54,9 @@ class Firebase {
         console.log(e.code);
       });
   };
+
+  //Current User
+  currentUser = () => firebase.auth().currentUser;
 
   // Get Player
   thePlayer = (id, stateSetter) => {

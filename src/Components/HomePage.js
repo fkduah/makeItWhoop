@@ -7,7 +7,7 @@ import "./../App.css";
 import headerImage from "../../src/MakeItWhoop-Illustration.svg";
 import player from "../../src/highschool-grid-03.jpg";
 import recruiter from "../../src/coach-recruit.jpg";
-import schoolCoach from "../../src/high-school-grid-01.jpg";
+// import schoolCoach from "../../src/high-school-grid-01.jpg";
 import logo from "../../src/logo192.png";
 
 import {
@@ -105,7 +105,7 @@ function HomePage() {
             to all members of the development and recruitment cycle.
           </p>
 
-          <Link to="/login">
+          <Link to="/scouts">
             <Button variant="contained" color="secondary" size="large">
               Learn More
             </Button>
@@ -123,16 +123,18 @@ function HomePage() {
               flexWrap="wrap"
               className="pageTitleIntro homePage"
             >
-              <Box className="animated fadeInUp">
-                <Link to="/hoopers">
-                  <Card
-                    image={player}
-                    title="Hoopers"
-                    content="Would you like to play basketball after high school? We created this platform for you! Share your basketball information, statistics, highlights, academics and more with university and college coaches across North America today!"
-                    imageTitle="Basketball Players"
-                  />
-                </Link>
-              </Box>
+              {
+                //  <Box className="animated fadeInUp">
+                //   <Link to="/hoopers">
+                //     <Card
+                //       image={player}
+                //       title="Hoopers"
+                //       content="Would you like to play basketball after high school? We created this platform for you! Share your basketball information, statistics, highlights, academics and more with university and college coaches across North America today!"
+                //       imageTitle="Basketball Players"
+                //     />
+                //   </Link>
+                // </Box>
+              }
               <Box className="animated fadeInUp">
                 <Link to="/scouts">
                   <Card
